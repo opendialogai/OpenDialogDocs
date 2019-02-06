@@ -6,7 +6,9 @@ authorURL: http://twitter.com/ronald_istos
 
 ## What is OpenDialog?
 
-OpenDialog is an open-source conversation management framework built by [GreenShoot Labs](https:://greenshootlabs.com). It has strong opinions on how to structure and reason over conversations, a flexible and modular architecture to allow you to integrate with other systems and execute actions during conversations, and can be used with any number of conversational interfaces (Slack, web, Facebook, Alexa, etc.). It provides an easy to use administration interface to manage and configure your conversational application and track the performance of those conversations.
+OpenDialog is an open-source conversation management framework built by [GreenShoot Labs](https:://greenshootlabs.com). 
+
+At is heart is a powerful conversational engine  that coupled to a flexible and modular architecture, allow you to integrate with other systems and easily execute actions during conversations. OpenDialog can be used with any number of conversational interfaces (Slack, web, Facebook, Alexa, etc.). Finally, it provides an easy to use administration interface to manage and configure your conversational application and track the performance of those conversations.
 
 We aim to build a tool that:
 

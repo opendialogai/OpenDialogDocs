@@ -38,7 +38,7 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'doc1', label: 'Docs'},
+    {doc: 'conversational-applications', label: 'Docs'},
     {blog: true, label: 'Blog'},
   ],
 
@@ -48,7 +48,7 @@ const siteConfig = {
   /* path to images for header/footer */
   //headerIcon: 'img/greenshoot.png',
   //footerIcon: 'img/greenshoot.png',
-  favicon: 'img/favicon.png',
+  //favicon: 'img/favicon.png',
 
   /* Colors for website */
   colors: {

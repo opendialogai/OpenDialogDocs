@@ -64,8 +64,6 @@ class HomeSplash extends React.Component {
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
             <Button href="blog/2019/02/5/introducing-open-dialog">Introduction</Button>
-            <Button href={docUrl('doc1.html')}>Conversation Management</Button>
-            <Button href={docUrl('doc2.html')}>Example Link 2</Button>
           </PromoSection> 
         </div>
       </SplashContainer>
@@ -95,8 +93,11 @@ class Index extends React.Component {
       <div
         className="productShowcaseSection paddingBottom"
         style={{textAlign: 'center'}}>
-        <h2>Feature Callout</h2>
-        <MarkdownBlock>These are features of this project</MarkdownBlock>
+        <MarkdownBlock>Open-source</MarkdownBlock>
+        <MarkdownBlock>Develop, manage and measure conversations</MarkdownBlock>
+        <MarkdownBlock>Built-in support for conversational interfaces (Alexa, Messanger, Slack, Web Chat)</MarkdownBlock>
+        <MarkdownBlock>Built-in support for leading NLP Platforms</MarkdownBlock>
+        <MarkdownBlock>Powerful admin interface and analytics</MarkdownBlock>
       </div>
     );
 
@@ -154,11 +155,7 @@ class Index extends React.Component {
       <div>
         <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
-          <Features />
           <FeatureCallout />
-          <LearnHow />
-          <TryOut />
-          <Description />
         </div>
       </div>
     );

@@ -44,7 +44,7 @@ class Footer extends React.Component {
           <div>
             <h5>Community</h5>
             <a
-              href="https://twitter.com/greenshootlabs"
+              href="https://twitter.com/opendialogAI"
               target="_blank"
               rel="noreferrer noopener">
               Twitter
@@ -53,10 +53,11 @@ class Footer extends React.Component {
           <div>
             <h5>More</h5>
             <a href={`${this.props.config.baseUrl}blog`}>Blog</a>
-            <a href="https://github.com/greenshootlabs">GitHub</a>
+            <a href="https://github.com/greenshootlabs">Coming soon on GitHub</a>
           </div>
         </section>
 
+        <section className="copyright">OpenDialog is created by <a href="https://greenshootlabs.com">GreenShoot Labs</a></section>
         <section className="copyright">{this.props.config.copyright}</section>
       </footer>
     );

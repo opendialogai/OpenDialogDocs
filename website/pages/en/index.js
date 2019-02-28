@@ -64,7 +64,10 @@ class HomeSplash extends React.Component {
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
             <Button href="blog/2019/02/5/introducing-open-dialog">Introduction</Button>
+            <Button href="docs/conversational-applications">Docs</Button>
+            <Button href="blog">Blog</Button>
           </PromoSection> 
+
         </div>
       </SplashContainer>
     );
@@ -91,13 +94,14 @@ class Index extends React.Component {
 
     const FeatureCallout = () => (
       <div
-        className="productShowcaseSection paddingBottom"
+        className=" paddingBottom"
         style={{textAlign: 'center'}}>
-        <MarkdownBlock>Open-source</MarkdownBlock>
-        <MarkdownBlock>Develop, manage and measure conversations</MarkdownBlock>
-        <MarkdownBlock>Built-in support for conversational interfaces (Alexa, Messanger, Slack, Web Chat)</MarkdownBlock>
-        <MarkdownBlock>Built-in support for leading NLP Platforms</MarkdownBlock>
-        <MarkdownBlock>Powerful admin interface and analytics</MarkdownBlock>
+        <p>Open-source</p>
+        <p>Develop, manage and measure conversations</p>
+        <p>Built-in support for conversational interfaces (Alexa, Messanger, Slack, Web Chat)</p>
+        <p>Built-in support for leading NLP Platforms</p>
+        <p>Powerful admin interface and analytics</p>
+        <p><strong>Coming Soon! <a href="https://opendialog.ai">Register here to be notified</a></strong></p>
       </div>
     );
 

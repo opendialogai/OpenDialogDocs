@@ -11,11 +11,11 @@
 // List of projects/orgs using your project for the users page.
 const users = [
   {
-    caption: 'GreenShoot Labs',
+    caption: 'OpenDialog',
     // You will need to prepend the image path with your baseUrl
     // if it is not '/', like: '/test-site/img/docusaurus.svg'.
     image: 'open-dialog-docs/img/greenshoot.png',
-    infoLink: 'https://www.greenshootlabs.com',
+    infoLink: 'https://www.opendialog.ai',
     pinned: true,
   },
 ];
@@ -31,7 +31,7 @@ const siteConfig = {
 
   // Used for publishing and more
   projectName: 'OpenDialogDocs',
-  organizationName: 'greenshootlabs',
+  organizationName: 'opendialog',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'

@@ -23,8 +23,8 @@ const users = [
 const siteConfig = {
   title: 'OpenDialog', // Title for your website.
   tagline: 'Conversation Management Framework',
-  url: 'https://greenshootlabs.github.io', // Your website URL
-  baseUrl: '/OpenDialogDocs/', // Base URL for your project */
+  url: 'https://docs.opendialog.ai', // Your website URL
+  baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',

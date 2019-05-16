@@ -1,6 +1,6 @@
 ---
-id: conversational-model
-title: Concepts
+id: conversational_model
+title: Conversational Model
 ---
 
 ## Modelling conversational applications as Electronic Instututions

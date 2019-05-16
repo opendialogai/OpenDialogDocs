@@ -1,11 +1,28 @@
 {
   "docs": {
+  	"Introduction" : [
+  		"what_is_open_dialog",
+  		"for_developers",
+  		"for_conversation_designers",
+  		"for_product_owners"
+  	], 
     "Core Ideas": [
-    	"conversational-applications", 
-    	"conversational-model", 
+    	"conversational_applications",
+    	"conversational_model",
     	"conversation-markup"
    	],
-   	"Defining Conversations" : [
-  	  "conversation-markup"    ]
+   	"Working with OpenDialog": [
+   		"installing_opendialog",
+		"adding_a_conversation",
+		"adding_a_message",
+		"building_an_interpreter",
+		"building_an_action"
+   	],
+   	"Conversation Description Language" : [
+  	  	"conversation_markup"
+  	],
+	"Message Markup" : [
+		"message_markup"
+	]
   }
 }

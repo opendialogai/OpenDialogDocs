@@ -1,11 +1,11 @@
 ---
-id: conversation-markup
-title: Conversation Markup Basics
+id: conversation_markup
+title: Conversation Markup
 ---
 
 ## Conversation Markup Basics
 
-Conversations can be defined using a YAML file. This makes them easy to version and share and easy to understand. 
+Conversations can be defined using YAML. This makes them easy to version and share and easy to understand. 
 
 Each YAML file holds a single conversation. Each conversation has an identifier which needs to be unique within a group of conversations that an agent should be dealing with. 
 
@@ -18,7 +18,7 @@ conversation:
 
 ### Conditions
 
-A conversation can have conditions associated with it. Conditions are a list of statements that need to evaluate to true for the conversation to be considered. For example:
+A conversation can have conditions associated with it. Conditions are a list of statements that need to evaluate to true for the conversation to be considered as a candidate conversation to use with the user. For example:
 
 ```yaml
 conditions:

@@ -21,8 +21,8 @@ const users = [
 ];
 
 const siteConfig = {
-  title: 'OpenDialog', // Title for your website.
-  tagline: 'Conversation Management Framework',
+  title: 'OpenDialog - Conversation Management Platform', // Title for your website.
+  tagline: 'Conversation Management Platform',
   url: 'https://opendialogai.github.io', // Your website URL
   baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
@@ -39,8 +39,9 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'conversational-applications', label: 'Docs'},
+    {doc: 'what_is_open_dialog', label: 'Docs'},
     {blog: true, label: 'Blog'},
+      {href: "https://github.com/opendialogai", label: "Github"}
   ],
 
   // If you have users set above, you add it here:
@@ -53,7 +54,7 @@ const siteConfig = {
 
   /* Colors for website */
   colors: {
-    primaryColor: '#2E8555',
+    primaryColor: '#1b212a',
     secondaryColor: '#205C3B',
   },
 

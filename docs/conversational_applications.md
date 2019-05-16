@@ -1,5 +1,5 @@
 ---
-id: conversational-applications
+id: conversational_applications
 title: Conversational Applications
 sidebar_label: Conversational Applications
 ---

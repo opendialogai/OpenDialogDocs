@@ -1,6 +1,19 @@
 /* your custom css */
 
+a {
+	color:#002356;
+}
+
+.homeContainer .homeWrapper .projectLogo {
+	justify-content: center;
+	padding: 0px;
+	position: relative;
+}
+
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+	.navigationSlider .slidingNav ul {
+		background: #00f;
+	}
 }
 
 @media only screen and (min-width: 1024px) {

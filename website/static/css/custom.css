@@ -4,6 +4,10 @@ a {
 	color:#002356;
 }
 
+.copyright a {
+	color:white;
+}
+
 .homeContainer .homeWrapper .projectLogo {
 	justify-content: center;
 	padding: 0px;

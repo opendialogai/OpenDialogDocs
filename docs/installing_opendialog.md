@@ -4,4 +4,6 @@ title: Installing OpenDialog
 sidebar_label: Installing OpenDialog
 ---
 
-We are working on documentation intensively so visit back soon for updates. In the meantime you can go follow us on twitter - [@opendialogai](https://twitter.com/opendialogai) or [register on our newsletter](https://opendialog.us17.list-manage.com/subscribe?u=322cd534b7ef55ca623b5e01d&id=e8487a0412).
+We have a repository with instructions on how to get started with an OpenDialog application [here](https://github.com/opendialogai/opendialog).
+
+We are also conscious that more documentation is required and working towards it!  

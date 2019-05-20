@@ -4,4 +4,14 @@ title: Adding a conversation
 sidebar_label: Adding a conversation
 ---
 
-We are working on documentation intensively so visit back soon for updates. In the meantime you can go follow us on twitter - [@opendialogai](https://twitter.com/opendialogai) or [register on our newsletter](https://opendialog.us17.list-manage.com/subscribe?u=322cd534b7ef55ca623b5e01d&id=e8487a0412).
+The core unit of management of an OpenDialog bot is the conversation. 
+
+It's worth [checking this out](conversational_model.md) to see how we think of conversations and the [conversational markup](conversation_markup.md) we use.
+
+To add a conversation visit `admin/resources/conversations` and add a new conversation directly as a yaml definition. We are working on improving the overall validation process and further GUI support.
+
+Once a conversation is save you need to publish it in order for it to be considered as a possible conversation for the bot to use. 
+
+Also ensure that you provide outgoing messages that match the conversation's outgoing intents.  
+
+  

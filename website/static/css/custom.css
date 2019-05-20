@@ -4,6 +4,10 @@ a {
 	color:#002356;
 }
 
+article a {
+	color: #004cbb;
+}
+
 .copyright a {
 	color:white;
 }

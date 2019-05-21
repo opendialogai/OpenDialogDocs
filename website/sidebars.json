@@ -23,6 +23,9 @@
   	],
 	"Message Markup" : [
 		"message_markup"
+	],
+	"API Docs": [
+		"webchat_api"
 	]
   }
 }

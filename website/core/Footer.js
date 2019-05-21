@@ -57,7 +57,7 @@ class Footer extends React.Component {
           </div>
         </section>
 
-        <section className="copyright">OpenDialog is created by <a href="https://greenshootlabs.com">GreenShoot Labs</a></section>
+        <section className="copyright"><a href="https://opendialog.ai">OpenDialog</a> is created by <a href="https://greenshootlabs.com">GreenShoot Labs</a></section>
         <section className="copyright">{this.props.config.copyright}</section>
       </footer>
     );

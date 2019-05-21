@@ -14,7 +14,5 @@ Our goal with OpenDialog is to built a conversation management platform that act
 
 ## Ok - so how do I keep up?
 
-We will be regularly sharing pieces of the work as it is ready for wider consumption. If you are in London come to the February Chatbot [meetup](https://www.meetup.com/Messaging-Bots-London/events/257034547/) - we will be there talking about and demonstrating OpenDialog.
-
-Follow us on [Twitter](https://twitter.com/greenshootlabs) or [LinkedIn](https://www.linkedin.com/company/greenshoot-labs/) or drop us an email at hello@greenshootlabs. We are more than happy to jump on a call and show you what we have so far and get comments. 
+We will be regularly sharing pieces of the work as it is ready for wider consumption. Follow us on [Twitter](https://twitter.com/greenshootlabs) or [LinkedIn](https://www.linkedin.com/company/greenshoot-labs/) or drop us an email at hello@greenshootlabs. We are more than happy to jump on a call and show you what we have so far and get comments. 
 

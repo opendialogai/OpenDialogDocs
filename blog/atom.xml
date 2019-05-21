@@ -2,12 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://opendialogai.github.io/blog</id>
     <title>OpenDialog - Conversation Management Platform Blog</title>
-    <updated>1970-01-01T00:00:00Z</updated>
+    <updated>2019-05-20T06:00:00Z</updated>
     <generator>Feed for Node.js</generator>
     <link rel="alternate" href="https://opendialogai.github.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest OpenDialog - Conversation Management Platform news and events.</subtitle>
     <logo>https://opendialogai.github.io/undefined</logo>
     <rights>Copyright © 2019 GreenShoot Labs</rights>
+    <entry>
+        <title type="html"><![CDATA[The OpenDialog Application]]></title>
+        <id>https://opendialogai.github.io/blog/2019/05/20/the-open-dialog-app.html</id>
+        <link href="https://opendialogai.github.io/blog/2019/05/20/the-open-dialog-app.html">
+        </link>
+        <updated>2019-05-20T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>It's been just a bit over 2 months since we started OpenDialog development and a few days we tagged version 0.4 of <a href="https://github.com/opendialogai/core/releases/tag/0.4.0">OpenDialog Core</a>. This means that all the major components are in place and we can focus on improvements and fixes on specific aspects i...</p>]]></summary>
+        <author>
+            <name>Ronald Ashri</name>
+            <uri>http://twitter.com/ronald_istos</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Introducing OpenDialog]]></title>
         <id>https://opendialogai.github.io/blog/2019/02/5/introducing-open-dialog.html</id>

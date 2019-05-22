@@ -3,6 +3,7 @@ id: conversation_markup
 title: Conversation Markup
 ---
 
+
 ## Conversation Markup Basics
 
 Conversations can be defined using YAML. This makes them easy to version and share and easy to understand. 
@@ -22,37 +23,35 @@ A conversation can have conditions associated with it. Conditions are a list of 
 
 ```yaml
 conditions:
-  - last_message_posted_time: 10000
-    operation: ge
-```
+  operation: greater_than
+  attributes:
+    attribute1: user.credits
+  params:
+    value1: 100
+  ```
 
-The above condition statement will ask the conversation engine to verify that the value of the attribute `last_message_posted_time` is `greater than or equal` to 10000. 
+The above condition statement will ask the conversation engine to verify that the value of the attribute `credits` in the context `user` is `greater than or equal` to 100. 
 
+The list of attributes and values is optional - it is up to the implementation of the operation how attirbutes and parameters are going to be used.
 
-The allowed operations are
-
+There are a number of operations coming out of OpenDialog core such as: 
 ```
 le - less than or equal to
 lt - less than
 ge - greater than or equal to
 gt - greater than
 ```
-
-If the conditional check is for a boolean no operation is required. 
-
-```yaml
-conditions:
-  - user_is_logged_in: true
-```
+but developers can also define their own completely custom operations.
 
 All the conditions associated with a conversation must evaluate to true for the conversation to be considered.
 
+> We will be adding support for conditions on scenes and intents soon.
 
 ### Scenes
 
 A scene represents an exchange of intents between participants in a scene.
 
-Scenes can have conditions defined that need to evaluate to true (just like conversations).
+Scenes will have conditions defined that need to evaluate to true (just like conversations).
 
 Each scene has an identifier which is also the key of the scene object in YAML. Exchanges of intents are defined by the identifier for the participant expressing that intent and an identifier for the intent. 
 
@@ -60,30 +59,71 @@ Each scene has an identifier which is also the key of the scene object in YAML. 
 scenes:
   opening_scene:
     intents:
-     - u: remaining_tasks
-     - b: task_report
+     - u: 
+         i: remaining_tasks
+     - b:
+         i: task_report
 ```
 
 The `welcome_scene` above captures the exchange between the user (`u`) and the bot (`b`). The user starts the conversation with the opening intent `remaining_tasks`. Th `u` and `b` are default identifiers.
 
 In real terms this means that the user asked something like `tell me what other tasks I have to do` or `give me my remaining tasks` or `fetch unfinished work`. All these _utterances_ can be mapped to a _single_ intent.
 
-The bot replies with a message that has the intent of presenting the user a task report. 
+The bot replies with a message that has the intent of presenting the user a task report. The actual message that will carry that intent over to the user will be determined by the OpenDialog ResponseEngine which maps outgoing intents to messages. This allows us to vary the output messages based on a number of conditions as well. 
 
 #### Interpreters
 
-In order to interpret utterances from users to specific intents we use interpreters. OpenDialog supports both an application-wide default interpreter that can be used for all utterances, but conversations, scenes and intents within scenes can define their own interpreters.
+In order to interpret utterances from users to specific intents we use interpreters. OpenDialog supports both an application-wide default interpreter that can be used for all utterances, but conversations, scenes and intents within scenes can define their own interpreters. 
+
+> Custom interpreters mean that we can mix and match capabilities and tailor them to the problem at hand rather than forcing the entire conversation to adhere to a single model of interpretation.
 
 ```yaml
 scenes:
   opening_scene:
     intents:
-     - u: remaining_tasks
-       interpreter: remaining_tasks_interpreter
-     - b: task_report
+     - u: 
+         i: remaining_tasks
+         interpreter: remaining_tasks_interpreter
+     - b: 
+         i: task_report
 ```
 
-When the conversation engine is attempting to match an utterance to an intent and considers the `welcome_scene` of the `task_management` conversation it will ask that the utterance be given to the `remaining_tasks_interpreter` for interpretation. 
+When the conversation engine is attempting to match an utterance to an intent and considers the `opening_scene` of the `task_management` conversation it will ask that the utterance be given to the `remaining_tasks_interpreter` for interpretation. 
+
+We can also define a confidence score to accosiate with the incoming intent. 
+
+```yaml
+scenes:
+  opening_scene:
+    intents:
+     - u: 
+         i: remaining_tasks
+         interpreter: remaining_tasks_interpreter
+         confindence: 0.7
+     - b: 
+         i: task_report
+```
+
+#### Attributes associated to incoming intents
+
+Incoming intents can contain useful information that we want to store as an [attribute](attributes.md). It is interpreters that are responsible for identifiying attributes within an intent - this attributes are extracted and passed on to the ConversationEngine. If there is no pre-existing configuration attributes will be stored in the `session` context. 
+
+If an attribute should be dealt with differently (i.e. not stored in the `session` context) then the conversational markup should explicitly define this. 
+
+```yaml
+scenes:
+  opening_scene:
+    intents:
+     - u: 
+         i: remaining_tasks
+         expected_attributes:
+           - id: project.projectName
+         interpreter: remaining_tasks_interpreter
+     - b: 
+         i: task_report
+```
+
+What the above markup does is say "If you find an attribute that matches projectName within the `remaining_tasks` intent store it in the `project` context. This attribute could then be used as required by subsequent actions or messages. 
 
 #### Actions
 
@@ -95,10 +135,25 @@ scenes:
     intents:
      - u: 
          i: remaining_tasks
+         expected_attributes:
+           - id: project.projectName
          interpreter: remaining_tasks_interpreter
          action: retrieve_remaining_tasks
-     - b: task_report
+     - b: 
+         i: task_report
 ```
+Here we are saying that if we have identified the incoming intent as `remaining_tasks` then we should perform the `retrieve_remaining_tasks` action. The action itself could, within its own implementation logic at the code level, query the `project` context and if it finds a `projectName` attribute set use that to filter tasks.
+
+So if the user said something like 
+
+_\-User:_    Let me  what else I have to do
+
+they would get a report on all the tasks they have across all projects, while if they said
+
+_\-User:_    Let me  what else I have to do on the OpenDialog project
+
+they would get a report filter with tasks that are just about OpenDialog.
+
 
 #### Completing conversations
 
@@ -242,7 +297,7 @@ conversation:
     opening_scene:
       intents:
         - u: create_a_new_task
-          attributes:
+          expected_attributes:
             - id: task.name
               if-not-present:
                 transition:
@@ -293,4 +348,5 @@ The key is in the opening utterance from the user. We are expecting an utterance
 In this case we are explicitly dealing with the situation where the attribute has not been detected in the utterance. If an attribute is missing we move to a scene whose goal is to collect the required utterance. These scenes complete with a special type of transition `u_virtual` - this will transition the conversation to the opening_scene and force the conversation engine to reconsider the situation _as if_ the `create_a_new_task` intent was said. 
 
 With each pass through the opening scene we should have additional information until we have all the required attributes and can perform the action of creating the task.  
+
 

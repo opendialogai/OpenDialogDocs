@@ -13,6 +13,7 @@
    	],
    	"Working with OpenDialog": [
    		"installing_opendialog",
+      "attributes",
 		"adding_a_conversation",
 		"adding_a_message",
 		"building_an_interpreter",

@@ -129,20 +129,28 @@ What the above markup does is say "If you find an attribute that matches project
 
 After a user intent is matched or a bot intent is selected to generate a response utterance we can define an action to be performed. In the background, the results of that action will be available for the agent to use to render the response or do any other type of reasoning required. 
 
+Actions define their input and output attributes to let the conversation engine know which context to retrieve the defined input attributes from, and which context to save the output attributes to.
+
 ```yaml
 scenes:
   opening_scene:
     intents:
      - u: 
-         i: remaining_tasks
+         i: intent.example.remaining_tasks
          expected_attributes:
            - id: project.projectName
-         interpreter: remaining_tasks_interpreter
-         action: retrieve_remaining_tasks
+         interpreter: interpreter.example.remaining_tasks_interpreter
+         action: 
+           id: action.example.retrieve_remaining_tasks
+           input_attributes:
+              - user.id
+              - session.project_name
+           output_attributes:
+              - user.tasks
      - b: 
          i: task_report
 ```
-Here we are saying that if we have identified the incoming intent as `remaining_tasks` then we should perform the `retrieve_remaining_tasks` action. The action itself could, within its own implementation logic at the code level, query the `project` context and if it finds a `projectName` attribute set use that to filter tasks.
+Here we are saying that if we have identified the incoming intent as `intent.example.remaining_tasks` then we should perform the `action.example.retrieve_remaining_tasks` action. The action would be passed in the `id` attribute from the `user` context and the `project_name` from the `session` context. In it's implementation at code level, it could use these attribute values to collect and return the remaining tasks for the user on the given project. Since `output_attributes` have been defined on the action, the `tasks` attribute will be saved to the `user` context by the conversation engine.  
 
 So if the user said something like 
 
@@ -153,7 +161,6 @@ they would get a report on all the tasks they have across all projects, while if
 _\-User:_    Let me  what else I have to do on the OpenDialog project
 
 they would get a report filter with tasks that are just about OpenDialog.
-
 
 #### Completing conversations
 
@@ -166,7 +173,8 @@ scenes:
      - u: 
         i: remaining_tasks
         interpeter: remaining_tasks_interpreter
-        action: retrieve_remaining_tasks
+        action:
+          id: retrieve_remaining_tasks
      - b: 
         i: task_report
         completes: true
@@ -310,8 +318,8 @@ conversation:
               if-not-present:
                 transition:
                   scene: request_assignee_name
-          actions:
-            action: create_task
+          action:
+            id: create_task
         - b: task_creation_report
           completes: true
     request_task_name:

@@ -3,13 +3,28 @@ id: conversational_model
 title: Conversational Model
 ---
 
+### Chatbots as agents
+
+>OpenDialog takes an agent-based view of a chatbots.
+
+Multi-agent systems development is a subfield of AI that studies the possible architecture of individual agents as well as the architecture of systems that allow multiple agents to coordinate towards both individual and joint goals.
+
+OpenDialog models the interaction between the user and the chatbot as that between agents in a multi-agent system. In particular, we draw from work around around [electronic institutions](https://nms.kcl.ac.uk/michael.luck/resources/aij12.pdf) to describe the overall context within which users and bots operate in. In addition, we looked at [enhanced Dooley graphs](https://pdfs.semanticscholar.org/71e5/f7aee39470470c1bed39bf11790d8df4cccd.pdf) for the added flexibility in  representing the exchange of messages between participants in a conversation. 
+
+
+
 ## Modelling conversational applications as Electronic Instututions
 
 In OpenDialog conversational applications are modelled as _electronic institutions_ (EIs). 
 
 An EI is "an organisational structure for coordinating the activities of multiple interacting agents". 
 
-It mimics the concept of a conventional institution, as a space for coordinating the activities of individuals and transposes and evolves those concepts to fit the needs of a digital setting.  The abstraction of an EI, and the semantics it offers, provides the conceptual framework for capturing the activities of interacting agents in a conversational setting and describe them in a consistent and coherent way. 
+It mimics the concept of a conventional institution, as a space for coordinating the activities of individuals and transposes and evolves those concepts to fit the needs of a digital setting.
+
+
+  The abstraction of an EI, and the semantics it offers, provides the conceptual framework for capturing the activities of interacting agents in a conversational setting and describe them in a consistent and coherent way. 
+
+Almost anything we do in day to day life is a type of social institution. The way we behave in a restaurant (walk in, get seated, orders taken, etc), the way we behave in a shop, the way we behave at the office and so on. All these institutions define some norms and regulations about how everyone within an institution is supposed to behave so that the purpose the istitution was designed or has evolved for is achieved. For example, if you walk in a restaurant and start throwing things around or swearing at other guests you will be asked to leave. It is not acceptable behaviour. If you walk into a restaurant and ask for something of the menu before you were seated at a table you might be asked to wait to be seated, that is the norm of how the 
 
 > In OpenDialog _every_ participant, from bots to human users, is modelled as an agent participating in an EI. We use the same concepts and abstractions for both throughout giving us a *coherent* model of the system through a common set of concepts. 
 
@@ -21,13 +36,13 @@ The agents in our EI need to cooperate and coordinate to achieve their goals. Th
 
 ### An EI caters for decomposable activities
 
-Activities are decomposable. A larger goal (e.g. order a pizza to be delivered to a specific location) can be decomposed into smaller activities (choose restaurant from which to order, define order, define location, deliver, pay, rate experience, etc). These smaller activities each require an exchange of _utterances_ in different stages with each stage achieving a specific goal. We call the different stages _scenes_. 
+Activities are decomposable. A larger goal (e.g. order a pizza to be delivered to a specific location) can be decomposed into smaller activities (choose restaurant from which to order, define order, define location, deliver, pay, rate experience, etc). These smaller activities each require an exchange of _utterances_ in different stages with each stage achieving a specific goal. We call the different stages _scenes_. _Scenes_ can be composed into larger _conversations_.
 
-Scenes have a specific purpose and a well defined communication protocol. Networks of scenes represent the progress of a conversation through different phases with potentially different constraints and relevant context. As the conversation progress through scenes different _activities_ are also completed, each taking us closer to the final goal. 
+_Conversations_ have a specific purpose and a well defined communication protocol. Networks of scenes represent the progress of a conversation through different phases with potentially different constraints and relevant context. As the conversation progress through scenes different _activities_ are also completed, each taking us closer to the final goal. 
 
 ### An EI is an open system
 
-Openess from an EI perspective means that agents can enter or leave the system at any point. The design of conversations and the management of knowledge needs to cater for constant and unpredictable change. 
+Openess from an EI perspective means that agents can enter or leave the system at any point. The design of conversations and the management of knowledge needs to cater for constant and unpredictable change. Crucially for dialogical systems with humans involved, handling the unexpected gracefully is key. 
 
 ### An EI is a dialogical system
 
@@ -35,45 +50,35 @@ Activities within an EI are achieved through the exchange of utterances and the 
 
 ## Representing conversations
 
-An EI is made up by the sum of possible conversations that participants in the EI can have. A conversation captures some higher order goal. Let us consider, for the sake of an example, the interactions between a team as they organise for their daily tasks. 
+An EI is made up by the sum of possible conversations that participants in the EI can have. A conversation captures some higher order goal. 
 
-The first goal to achieve is that of creating a checklist to capture the tasks that the team needs to work on. We can either start from a blank checklist or from a checklist template. 
+Conversations have a specific structure that we can reason about within OpenDialog. Below is simple conversation with just two scenes and a connection between the scenes. 
 
-Here is how we would represent a possible conversation to capture the interactions between bot and user.
-
-![alt-text](assets/checklist_creation_conversation.png)
+![alt-text](assets/example_conversation.png)
 
 There are a few things going on so let's break it down. 
 
-### A conversation is represented as a directed graph.
+### A conversation is represented as a graph.
 
-The graph allows us to capture the different scenes, the participants in each scene and the exchanges between participants as edges between participant nodes. 
+The graph allows us to capture the different scenes, the participants in each scene and the exchanges between participants as well as any other information such as actions. The graph structure within a graph database enables us to explore the conversational space flexibly and efficiently. 
 
-A conversation can develop within a single scene or it can branch out to different scenes. 
+### A conversation is divided in scenes with participants exchanging intents
+
+Participants in scenes intent to _say_ intents and _listen_ to intents. 
+
+A conversation can develop within a single scene or it can branch out to different scenes. Scenes are connected through intents that one participant in one scene says and a participant in an other scene listens for.
 
 Each scene has a specific sub-goal, the sum of goals giving us the overall objective. 
 
-The conversation starts with the user requesting a new checklist (Edge 1). The bot replies asking whether the checklist should be created from a template or from scratch. Depending on the user's response we either move to scene _Template Choice_ or to scene _Checklist Name_. 
+### Intents can cause actions
 
-If the user wants a blank checklist they will move the conversation to the _Checklist Name_ scene through the utterance represented on Edge 4, where the bot will ask for the name of the checklist (Edge 8), receive a response (Edge 9), provide confirmation (Edge 10) and the conversation completes.
+When OpenDialog has determined that a participant said a specific intent and that intent is associated with an action that action is performed. 
 
-If the user instead wants to select a template they move to the _Template Choice_ scene (Edge 3) to perform that task. 
+## Reasoning about conversations
 
-#### Transitions
+The task of OpenDialog is to facilitate the definition of conversation, starting from the core concepts defined here, and manage the processes of _running_ this conversations through a conversational interface. 
 
-Now, you may have noticed we don't actually have a way of moving from the _Template Choice_ scene to the _Checklist Name_ scene. If the conversation remains as is after we have selected a Template we would not be able to assign it a name. 
-
-We solve this issue by introducing a special type of connection between scenes - called a transition. Transitions are represented by a dotted line (Edge 7). The transition indicates the the follow-up action to the user's template choice is to move the entire conversation to the _Checklist Name_ scene. There the next utterance is the bot asking for the name of the checklist (Edge 8).
-
-![alt-text](assets/checklist_creation_conversation_2.png)
-
-#### Conditional Transitions
-
-Finally, let us consider the situation where we want to inject a different type of behaviour based on the type of template selected. Assume, for example, that when the team wants to collaborate on onboarding a new team member some tasks can be expetided by providing the name of the team member. In this case, instead of transitioning from the _Templace Choice_ to the _Checklist Name_ scene we want to introduce another option. This can be done be introducing conditional transitions. 
-
-A conditional transition supercedes a default (or unconditional) transition if the conditions are met. As shown in the diagram below we introduce Edge 11. A conditional transition based on the type of the template chosen. This moves the conversation to the _Onboarding Template Configuration_ scene (nb: if the configuration process was complex we could transition to a separate conversation with its own set of scenes). The member name is collected (Edges 12 and 13) and the with Edge 14 we transition to the checklist name scene which remains the same. 
-
-![alt-text](assets/checklist_creation_conversation_3.png)
+As you dive into other aspects of the document you will see how these basic concepts find practical implementation and are able to support a variety of different conversational patterns - from very simple ones to increasingly more sophisticated ones. 
 
 
 

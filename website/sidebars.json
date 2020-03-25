@@ -1,32 +1,28 @@
 {
   "docs": {
   	"Introduction" : [
-  		"what_is_open_dialog",
-  		"for_developers",
-  		"for_conversation_designers",
-  		"for_product_owners"
+  		"what_is_open_dialog"
   	], 
-    "Core Ideas": [
+    "Designing Conversations": [
     	"conversational_applications",
-    	"conversational_model",
-    	"conversation-markup"
+    	"conversational_model"
    	],
-   	"Working with OpenDialog": [
-   		"installing_opendialog",
-      "attributes",
-		"adding_a_conversation",
-		"adding_a_message",
-		"building_an_interpreter",
-		"building_an_action"
+    "Installing OpenDialog": [
+   	  "installing_opendialog"
    	],
-   	"Conversation Description Language" : [
-  	  	"conversation_markup"
-  	],
-	"Message Markup" : [
-		"message_markup"
-	],
-	"API Docs": [
-		"webchat_api"
-	]
+    "Working with OpenDialog": [
+      "creating_a_conversation"
+    ],
+    "Core Concepts": [
+      "architecture",
+      "conversation-markup",
+      "attributes",      
+      "conversation_markup",
+      "adding_a_message",
+      "message_markup",
+      "building_an_interpreter",
+      "building_an_action",
+      "webchat_api"
+    ]
   }
 }

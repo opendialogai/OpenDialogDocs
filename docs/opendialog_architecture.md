@@ -1,7 +1,7 @@
 ---
-id: for_developers
-title: OpenDialog for Developers
-sidebar_label: OpenDialog for Developers
+id: opendialog_architecture
+title: OpenDialog Architecture
+sidebar_label: architecture
 ---
 
 ## OpenDialog for Developers

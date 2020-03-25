@@ -5,14 +5,14 @@
         <link>https://opendialogai.github.io/blog</link>
         <description>The best place to stay up-to-date with the latest OpenDialog - Conversation Management Platform news and events.</description>
         <lastBuildDate>Mon, 20 May 2019 06:00:00 GMT</lastBuildDate>
-        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
-        <generator>Feed for Node.js</generator>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
         <image>
             <title>OpenDialog - Conversation Management Platform Blog</title>
             <url>https://opendialogai.github.io/undefined</url>
             <link>https://opendialogai.github.io/blog</link>
         </image>
-        <copyright>Copyright © 2019 GreenShoot Labs</copyright>
+        <copyright>Copyright © 2020 GreenShoot Labs</copyright>
         <item>
             <title><![CDATA[The OpenDialog Application]]></title>
             <link>https://opendialogai.github.io/blog/2019/05/20/the-open-dialog-app.html</link>

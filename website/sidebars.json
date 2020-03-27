@@ -2,7 +2,7 @@
   "docs": {
   	"Introduction" : [
   		"what_is_open_dialog"
-  	], 
+  	],
     "Designing Conversations": [
     	"conversational_applications",
     	"conversational_model"
@@ -16,8 +16,9 @@
     "Core Concepts": [
       "architecture",
       "conversation-markup",
-      "attributes",      
+      "attributes",
       "conversation_markup",
+      "conversational_markup",
       "adding_a_message",
       "message_markup",
       "building_an_interpreter",

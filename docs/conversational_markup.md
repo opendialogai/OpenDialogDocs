@@ -11,7 +11,20 @@ title: Conversational Markup
 
 ## Scenes
 
+Scenes are groupings of intents within a conversation. Each conversation is required to have at least one scene and this scene **must** be called `opening_scene`. This lets OpenDialog know which scene to select first when entering a new conversation. The first incoming intents within this opening scene are called [opening intents](conversational_markup#opening-intents) and these will be further detailed below. 
 
+```yaml
+conversation:
+  id: example_conversation
+  scenes:
+    opening_scene:
+      intents:
+        - u:
+            i: intent.app.opening_intent
+        - b:
+            i: intent.app_opening_intent_response
+            completes: true
+```
 
 
 ## Intents

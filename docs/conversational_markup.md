@@ -52,7 +52,7 @@ title: Conversational Markup
 
 ## Actions
 
-If you have some functionality that should occur alongside an intent, you can specify an action. Actions can be added to an OpenDialog application, with any number of input attributes and any number of output attributes. Actions themselves are agnostic to the context’s that these attributes belong to (similar to how expected attributes work for [interpreters](conversational_markup.md#interpreters)).
+If you have some functionality that should occur following the succesful identification and matching of an intent, you can associate that intent within the conversation to an _action_. Actions accept _input attributes_ and can return _output attributes_. Actions themselves are agnostic to the context’s that these attributes belong to (similar to how expected attributes work for [interpreters](conversational_markup.md#interpreters)).
 
 Actions can be specified using the `action` directive, which contains an object with `id`, `input_attributes` & `output_attributes` properties.
 

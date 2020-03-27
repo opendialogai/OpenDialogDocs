@@ -27,7 +27,20 @@ title: Conversational Markup
 
 ### Completing intents
 
+To allow users to move from one conversation to another, each conversation must eventually end. This can be achieved by denoting completing intents using the `completing` directive. Completing intents are intents that once matched, will end the current conversation.
 
+```yaml
+conversation:
+  id: example_conversation
+  scenes:
+    opening_scene:
+      intents:
+        - u:
+            i: intent.app.opening_intent
+        - b:
+            i: intent.app_opening_intent_response
+            completes: true
+```
 
 
 ### Virtual intents

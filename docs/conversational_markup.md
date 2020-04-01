@@ -22,7 +22,7 @@ title: Conversational Markup
 
 ### Opening intents
 
-As explained above, each conversation must have at least one scene and this scene must be called `opening_scene`. The first incoming intents of this opening scene are known as opening intents. 
+As mentioned above, each conversation must have at least one scene and this scene must be called `opening_scene`. The first incoming intents of this opening scene are known as opening intents. 
 
 ```yaml
 conversation:
@@ -41,7 +41,7 @@ conversation:
 
 In this example either `intent.app.opening_intent` or `intent.app.my_other_intent` will be selected as the first incoming intent of example_conversation.
 
-For OpenDialog to function as expected you must define conversations that contain the following opening intents:
+Out of the box, OpenDialog comes pre-configured with two such intents and conversations handling such intents are currently _expected_ for OpenDialog web-based chat to function as expected. The core opening intents are:
 
 *   `intent.core.welcome`
 *   `intent.core.NoMatch`
@@ -67,7 +67,7 @@ conversation:
 
 #### intent.core.NoMatch
 
-This is the intent that OpenDialog will send if it isn’t able to match a user’s utterance to an incoming intent.
+This is the intent that OpenDialog will send if it isn’t able to match a user’s utterance to any other possible incoming intent. This _no_match_conversation_ can be treated as the default catch-all conversation for a no match. However, if you use an intent.core.NoMatch within your own conversations those will take priority and allow you to provide more context specific no match messages back to the user. 
 
 ```yaml
 conversation:

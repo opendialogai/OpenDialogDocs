@@ -33,7 +33,7 @@ conversation:
 
 In the snippet above `intent.app.opening_intent` is an incoming intent from the user, signified by the `u`, and `intent.app.opening_intent_response` is an outgoing intent from the bot, signified by the `b`.
 
-One purpose of an intent is to move the conversation from one scene to another. This can be achieved by the `scene` directive.
+Intent can connect scenes by _spanning_ across scenes. moving forward the conversation. This can be achieved by the `scene` directive.
 
 ```yaml
 conversation:

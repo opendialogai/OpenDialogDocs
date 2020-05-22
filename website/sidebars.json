@@ -2,7 +2,7 @@
   "docs": {
   	"Introduction" : [
   		"what_is_open_dialog"
-  	], 
+  	],
     "Designing Conversations": [
     	"conversational_applications",
     	"conversational_model"
@@ -11,13 +11,9 @@
    	  "installing_opendialog"
    	],
     "Working with OpenDialog": [
-      "creating_a_conversation"
-    ],
-    "Core Concepts": [
-      "architecture",
-      "conversation-markup",
-      "attributes",      
-      "conversation_markup",
+      "attributes",
+      "cdl",
+      "creating_a_conversation",
       "adding_a_message",
       "message_markup",
       "building_an_interpreter",

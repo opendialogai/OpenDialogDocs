@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Adding a message · OpenDialog - Conversation Management Platform</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="We are working on documentation intensively so visit back soon for updates. In the meantime you can go follow us on twitter - [@opendialogai](https://twitter.com/opendialogai) or [register on our newsletter](https://opendialog.us17.list-manage.com/subscribe?u=322cd534b7ef55ca623b5e01d&amp;id=e8487a0412)."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Adding a message · OpenDialog - Conversation Management Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://opendialogai.github.io/"/><meta property="og:description" content="We are working on documentation intensively so visit back soon for updates. In the meantime you can go follow us on twitter - [@opendialogai](https://twitter.com/opendialogai) or [register on our newsletter](https://opendialog.us17.list-manage.com/subscribe?u=322cd534b7ef55ca623b5e01d&amp;id=e8487a0412)."/><meta property="og:image" content="https://opendialogai.github.io/img/greenshoot.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://opendialogai.github.io/img/greenshoot.png"/><link rel="shortcut icon" href="/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://opendialogai.github.io/blog/atom.xml" title="OpenDialog - Conversation Management Platform Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://opendialogai.github.io/blog/feed.xml" title="OpenDialog - Conversation Management Platform Blog RSS Feed"/><script>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Adding a message · OpenDialog - Conversation Management Platform</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="In the previous section about [creating a conversation](/docs/creating_a_conversation) we created a simple conversation with a request and response. Now, we are going to look at how we can associate messages to outgoing intents of that conversation. "/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Adding a message · OpenDialog - Conversation Management Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://opendialogai.github.io/"/><meta property="og:description" content="In the previous section about [creating a conversation](/docs/creating_a_conversation) we created a simple conversation with a request and response. Now, we are going to look at how we can associate messages to outgoing intents of that conversation. "/><meta property="og:image" content="https://opendialogai.github.io/img/greenshoot.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://opendialogai.github.io/img/greenshoot.png"/><link rel="shortcut icon" href="/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://opendialogai.github.io/blog/atom.xml" title="OpenDialog - Conversation Management Platform Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://opendialogai.github.io/blog/feed.xml" title="OpenDialog - Conversation Management Platform Blog RSS Feed"/><script>
               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -6,7 +6,7 @@
 
               ga('create', 'UA-105442123-5', 'auto');
               ga('send', 'pageview');
-            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">OpenDialog - Conversation Management Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/what_is_open_dialog" target="_self">Docs</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><li class=""><a href="https://github.com/opendialogai" target="_self">Github</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Core Concepts</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/what_is_open_dialog">What Is OpenDialog?</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Designing Conversations</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/conversational_applications">Conversational Applications</a></li><li class="navListItem"><a class="navItem" href="/docs/conversational_model">Conversational Model</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Installing OpenDialog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/installing_opendialog">Installing OpenDialog</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Working with OpenDialog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/creating_a_conversation">Creating a conversation</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Core Concepts</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/attributes">Attributes</a></li><li class="navListItem"><a class="navItem" href="/docs/conversation_markup">Conversation Markup</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/adding_a_message">Adding a message</a></li><li class="navListItem"><a class="navItem" href="/docs/message_markup">Message Markup</a></li><li class="navListItem"><a class="navItem" href="/docs/building_an_interpreter">Building an Interpreter</a></li><li class="navListItem"><a class="navItem" href="/docs/building_an_action">Building an Action</a></li><li class="navListItem"><a class="navItem" href="/docs/webchat_api">Webchat API</a></li></ul></div></div></section></div><script>
+            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">OpenDialog - Conversation Management Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/what_is_open_dialog" target="_self">Docs</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><li class=""><a href="https://github.com/opendialogai" target="_self">Github</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Working with OpenDialog</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/what_is_open_dialog">What Is OpenDialog?</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Designing Conversations</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/conversational_applications">Conversational Applications</a></li><li class="navListItem"><a class="navItem" href="/docs/conversational_model">Conversational Model</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Installing OpenDialog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/installing_opendialog">Installing OpenDialog</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Working with OpenDialog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/attributes">Attributes &amp; Contexts</a></li><li class="navListItem"><a class="navItem" href="/docs/cdl">Conversational Description Language</a></li><li class="navListItem"><a class="navItem" href="/docs/creating_a_conversation">Creating a conversation</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/adding_a_message">Adding a message</a></li><li class="navListItem"><a class="navItem" href="/docs/message_markup">Message Markup</a></li><li class="navListItem"><a class="navItem" href="/docs/building_an_interpreter">Building an Interpreter</a></li><li class="navListItem"><a class="navItem" href="/docs/building_an_action">Building an Action</a></li><li class="navListItem"><a class="navItem" href="/docs/webchat_api">Webchat API</a></li></ul></div></div></section></div><script>
             var coll = document.getElementsByClassName('collapsible');
             var checkActiveCategory = true;
             for (var i = 0; i < coll.length; i++) {
@@ -62,5 +62,140 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Adding a message</h1></header><article><div><span><p>We are working on documentation intensively so visit back soon for updates. In the meantime you can go follow us on twitter - <a href="https://twitter.com/opendialogai">@opendialogai</a> or <a href="https://opendialog.us17.list-manage.com/subscribe?u=322cd534b7ef55ca623b5e01d&amp;id=e8487a0412">register on our newsletter</a>.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/conversation_markup"><span class="arrow-prev">← </span><span>Conversation Markup</span></a><a class="docs-next button" href="/docs/message_markup"><span>Message Markup</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/what_is_open_dialog">Docs</a></div><div><h5>Community</h5><a href="https://twitter.com/opendialogAI" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/opendialogai">Github</a></div></section><section class="copyright"><a href="https://opendialog.ai">OpenDialog</a> is created by <a href="https://greenshootlabs.com">GreenShoot Labs</a></section><section class="copyright">Copyright © 2020 GreenShoot Labs</section></footer></div></body></html>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Adding a message</h1></header><article><div><span><p>In the previous section about <a href="/docs/creating_a_conversation">creating a conversation</a> we created a simple conversation with a request and response. Now, we are going to look at how we can associate messages to outgoing intents of that conversation.</p>
+<p>Let's start by taking another look at the conversation:</p>
+<hr>
+<p><img src="/docs/assets/simple_conversation2.png" alt="conversation"></p>
+<hr>
+<p>In the Intents section we have an opening intent and an outgoing intent. We want to associate this outgoing intent with a message. To do this we can click on the outgoing intent to create an outgoing intent in our message response engine that can be linked to messages.</p>
+<hr>
+<p><img src="/docs/assets/outgoing_intent.png" alt="conversation"></p>
+<hr>
+<p>Once the outgoing intent is created we can add message templates to it.</p>
+<hr>
+<p><img src="/docs/assets/outgoing_intent_created.png" alt="conversation"></p>
+<hr>
+<p>A message tempalte has a name, associated conditiosn and the message mark-up. We will deal with conditions later and for now just add the simplest type of message - a text message.</p>
+<hr>
+<p><img src="/docs/assets/message_template_with_text_message.png" alt="conversation"></p>
+<hr>
+<p>The message content is as follows:</p>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">text-message</span>&gt;</span>Doing fine - how about you?<span class="hljs-tag">&lt;/<span class="hljs-name">text-message</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
+
+</code></pre>
+<p>Now, returning to the test page for the bot and entering the incoming intent from the user as a trigger we will receive the message we just created.</p>
+<hr>
+<p><img src="/docs/assets/message_response.png" alt="conversation"></p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="messages-with-buttons"></a><a href="#messages-with-buttons" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Messages with Buttons</h2>
+<p>Of course, so far things aren't that exciting. The conversation was triggered by explicitly sending a trigger throught the bot admin test page.</p>
+<p>We are now going to see how we can create a bit more of a conversational flow (albeit a button driven one), before we move on and start exploring interpreters that will allow us to interpret natural language.</p>
+<p>Let's modify an existing conversation to enable the user to click on a button to send a message to the bot that will trigger another conversation. The conversation we will modify is the default welcome conversation.</p>
+<pre><code class="hljs"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">welcome</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.core.welcome</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.opendialog.WelcomeResponse</span>
+            <span class="hljs-attr">completes:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<p>The default welcome conversation waits for an an incoming intent called <code>intent.core.welcome</code> and replies with the <code>intent.opendialog.WelcomeResponse</code> outgoing intent. The <code>intent.core.welcome</code>, by default, is triggered by the event of the user opening the webchat widget. We will take advantage of this conversation and just add a button on the <code>intent.opendialog.WelcomeResponse</code> outgoing intent so that the user can react to that response.</p>
+<p>Since the intent remains the same we don't need to modify the actual conversation just the message associated with the outgoing intent. Go to the Message Editor, click on the WelcomeResponse outgoing intent and edit the Welcome message template, replacing it with the message below.</p>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button-message</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Welcome! How are you doing today?<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Doing great!<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>intent.app.hi<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button-message</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
+</code></pre>
+<p>We are creating a <code>button-message</code> that has some text at the top and then can have one or more buttons associated with it. Each button has a callback and in this case the callback is the id of the incoming intent that will match the next conversation. What we are telling OpenDialog is that when the user clicks that button OpenDialog should behave as if the user intented to say <code>intent.app.hi</code>.</p>
+<hr>
+<p><img src="/docs/assets/message_with_button.png" alt="conversation"></p>
+<hr>
+<p>Now, if we go back to the test page we will see that the welcome message has the button we just added.</p>
+<hr>
+<p><img src="/docs/assets/message_with_button_on_chat.png" alt="conversation"></p>
+<hr>
+<p>Clicking on it will trigger the conversation with the opening intent that matches that callback.</p>
+<blockquote>
+<p>Callbacks on buttons do not need to match the ids of incoming intents. If they do OpenDialog can handle them out of the box, if they don't you can provide mappings between callbacks and intents in OpenDialog configuration.</p>
+</blockquote>
+<hr>
+<p><img src="/docs/assets/response_to_button_message.png" alt="conversation"></p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="messages-with-conditions"></a><a href="#messages-with-conditions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Messages with conditions</h2>
+<p>Now, just to show how flows can start building in complexity and how we can use conditions in messages to help separate concerns, let's add another button that will allow the user to offer a different greeting.</p>
+<p>We will have a message with a positive hi and a negative hi and will respond appropriately based on the incoming intent.</p>
+<p>Below is the message that corresponds to the <code>intent.opendialog.WelcomeResponse</code> outgoing intent. We now have two buttons, with differnt text and callback values.</p>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button-message</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Welcome! How are you doing today?<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Doing great!<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>intent.app.positiveHi<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>I've been better<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>intent.app.negativeHi<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button-message</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
+</code></pre>
+<p>Next up, we want our conversation to pick up any one of those two intents and provide a response. As such, the conversation has two possible opening intents, one for a positive hi and one for a negative one.</p>
+<pre><code class="hljs"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">simple_conversation</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.positiveHi</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.negativeHi</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.HowDoYouDo</span>
+            <span class="hljs-attr">completes:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<p>The outgoing intent, however, remains the same but we are going to give our outgoing intent message two message templates, and we are going to add conditions to those messages so that the appropriate one is selected based on what the user said.</p>
+<blockquote>
+<p>There are multiple ways of &quot;solving&quot; this conversational problem. We could have used different conversations for each intent, we could have placed conditions on outgoing intents instead of the messages, we could have used multiple scenes, etc. For now, the purpose is to highlight the use of conditions on messages. Ultimately, you can pick the most appropriate solution based on what else is going on and how will be managing different parts of the application.</p>
+</blockquote>
+<p>The outgoing intent now looks like this:</p>
+<hr>
+<p><img src="/docs/assets/howdoyoudo_outgoing_intent.png" alt="conversation"></p>
+<hr>
+<p>There are two message templates, one for each type of response. Withing the message templates themselves we've added conditions.</p>
+<hr>
+<p><img src="/docs/assets/howdoyoudo_condition.png" alt="conversation"></p>
+<hr>
+<pre><code class="hljs"><span class="hljs-attribute">conditions</span>:
+  - <span class="hljs-attribute">condition</span>:
+      <span class="hljs-attribute">operation</span>: eq
+      <span class="hljs-attribute">attributes</span>:
+        <span class="hljs-attribute">attribute</span>: conversation.interpreted_intent
+      <span class="hljs-attribute">parameters</span>:
+        <span class="hljs-attribute">value</span>: intent.app.positiveHi
+</code></pre>
+<p>The condition takes advantage of the conversation context, and checks if the <code>interpreted_intent</code>is equal to <code>intent.app.positiveHi</code> (or <code>intent.aoo.negativehi</code> for the other message).</p>
+<hr>
+<p><img src="/docs/assets/positive_and_negative.png" alt="conversation"></p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="using-attributes-in-messages"></a><a href="#using-attributes-in-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using attributes in messages</h2>
+<p>Finally, let's look at how we can use attributes in messages to personalise them further.</p>
+<p>We will add the user's first name as an attribute in the positive message.</p>
+<pre><code class="hljs"><span class="hljs-params">&lt;message&gt;</span>
+  <span class="hljs-params">&lt;text-message&gt;</span>Fantastic, glad to hear <span class="hljs-class">it </span>{user.first_name}!<span class="hljs-params">&lt;/text-message&gt;</span>
+<span class="hljs-params">&lt;/message&gt;</span>
+</code></pre>
+<p>The result when we test it is:</p>
+<hr>
+<p><img src="/docs/assets/message_with_attribute.png" alt="conversation"></p>
+<hr>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/creating_a_conversation"><span class="arrow-prev">← </span><span>Creating a conversation</span></a><a class="docs-next button" href="/docs/message_markup"><span>Message Markup</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#messages-with-buttons">Messages with Buttons</a></li><li><a href="#messages-with-conditions">Messages with conditions</a></li><li><a href="#using-attributes-in-messages">Using attributes in messages</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/what_is_open_dialog">Docs</a></div><div><h5>Community</h5><a href="https://twitter.com/opendialogAI" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/opendialogai">Github</a></div></section><section class="copyright"><a href="https://opendialog.ai">OpenDialog</a> is created by <a href="https://greenshootlabs.com">GreenShoot Labs</a></section><section class="copyright">Copyright © 2020 GreenShoot Labs</section></footer></div></body></html>

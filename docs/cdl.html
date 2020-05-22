@@ -1,0 +1,371 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Conversational Description Language · OpenDialog - Conversation Management Platform</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Conversations"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Conversational Description Language · OpenDialog - Conversation Management Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://opendialogai.github.io/"/><meta property="og:description" content="## Conversations"/><meta property="og:image" content="https://opendialogai.github.io/img/greenshoot.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://opendialogai.github.io/img/greenshoot.png"/><link rel="shortcut icon" href="/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://opendialogai.github.io/blog/atom.xml" title="OpenDialog - Conversation Management Platform Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://opendialogai.github.io/blog/feed.xml" title="OpenDialog - Conversation Management Platform Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-105442123-5', 'auto');
+              ga('send', 'pageview');
+            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">OpenDialog - Conversation Management Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/what_is_open_dialog" target="_self">Docs</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><li class=""><a href="https://github.com/opendialogai" target="_self">Github</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Working with OpenDialog</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Introduction</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/what_is_open_dialog">What Is OpenDialog?</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Designing Conversations</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/conversational_applications">Conversational Applications</a></li><li class="navListItem"><a class="navItem" href="/docs/conversational_model">Conversational Model</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Installing OpenDialog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/installing_opendialog">Installing OpenDialog</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Working with OpenDialog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/attributes">Attributes &amp; Contexts</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/cdl">Conversational Description Language</a></li><li class="navListItem"><a class="navItem" href="/docs/creating_a_conversation">Creating a conversation</a></li><li class="navListItem"><a class="navItem" href="/docs/adding_a_message">Adding a message</a></li><li class="navListItem"><a class="navItem" href="/docs/message_markup">Message Markup</a></li><li class="navListItem"><a class="navItem" href="/docs/building_an_interpreter">Building an Interpreter</a></li><li class="navListItem"><a class="navItem" href="/docs/building_an_action">Building an Action</a></li><li class="navListItem"><a class="navItem" href="/docs/webchat_api">Webchat API</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Conversational Description Language</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="conversations"></a><a href="#conversations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Conversations</h2>
+<p>Conversational design in OpenDialog relies on three key building blocks: <strong>conversations</strong>, <strong>scenes</strong> &amp; <strong>intents</strong>. These three building blocks are in a hierarchical relationship where conversations contain scenes, and scenes contain intents. Within a single OpenDialog application there can be one or more conversations, with each conversation containing one or more scenes, and each scene containing one or more intents.</p>
+<p>OpenDialog conversations model communication between two agents: a user and the OpenDialog application (otherwise referred to as a bot). In conversational design this communication is primarily modeled by a simple alternation between user and bot intents, however there is also scope for more complex patterns by using <strong>interpreters</strong>, <strong>conditions</strong> and <strong>actions</strong>.</p>
+<p>Conversations in OpenDialog are described using YAML. The basic structure of a conversation is as follows:</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">example_conversation</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.openingIntent</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.openingIntentResponse</span>
+       <span class="hljs-string">...</span>
+    <span class="hljs-attr">second_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">...</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">...</span>
+            <span class="hljs-attr">completes:</span> <span class="hljs-literal">true</span>
+      <span class="hljs-string">...</span>
+</code></pre>
+<p>A conversation has an id (<code>example_conversation</code>) and is followed by a series of scenes, each with its own id (<code>opening_scene</code>, <code>second_scene</code>). Within scenes we have a series of intents exchanged by <em>agents</em>, one agent is the user (denoted with a <code>u</code>) and the other agent is the bot (denoted with a <code>b</code>).</p>
+<p>In the above fragment, in the <code>openining_scene</code> we expect the user to say something that would be interpreted as the <code>openingIntent</code> to which the bot would reply with the <code>openingIntentResponse</code>.</p>
+<p>A conversational description captures what the conversation application designers <em>expect</em> to happen. It is the job of the Conversational Engine to identify which, of potentially multiple conversations, is appropriate based on what the user has said. Once a conversation has been selected we remain <em>within</em> the conversation progressing from intent to intent and from scene to scene as long as we can succesfully keep matching the overall pattern of that conversation. If the pattern no longer holds (i.e. the user said something that can not be matched to one of the possible upcoming intents we <em>crash</em> out of a conversation and attempt to find an alternative match).</p>
+<h2><a class="anchor" aria-hidden="true" id="scenes"></a><a href="#scenes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Scenes</h2>
+<p>Scenes are groupings of intents within a conversation.</p>
+<p>Each conversation is required to have at least one scene and this scene <strong>must</strong> be called <code>opening_scene</code>. This lets OpenDialog know which scene to select first when entering a new conversation. The first set of incoming intents within this opening scene are called <a href="cdl#opening-intents">opening intents</a>.</p>
+<p>The OpenDialog Conversational Engine will consider all opening intents across all possible conversations when attempting to decide what conversation to instantiate with the user.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">example_conversation</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.openingIntent</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.openingIntentResponse</span>
+            <span class="hljs-attr">completes:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="intents"></a><a href="#intents" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Intents</h2>
+<p>Intents come in two forms: incoming &amp; outgoing. Incoming intents are what users interacting with the application <em>might</em> say, while outgoing intents is what the bot would say. When a user says something to the bot that we have an <em>utterance</em>. The utterance then goes through various interpreters that will attempt to map it to an intent. For the bot the inverse happens. After we have a user intent we can then identify what the appropriate outgoing intent is. This outgoing intent is then mapped to an <em>utterance</em> or <em>message</em> from the bot to the user.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">example_conversation</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.openingIntent</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.openingIntentResponse</span>
+       <span class="hljs-string">...</span>
+</code></pre>
+<p>It is fundamental to the understanding of how OpenDialog works to appreciate that conversations are designed using intents <em>both</em> for incoming and outgoing utterances. In the case of incoming utterance, the utterance is interpreted and then mapped to an intent. In the case of outgoing utterances, we start from an an outgoing intent that is mapped to an outgoing message.</p>
+<p>Multiple pairs of intents can be exchanged within a single scene. Once a dialog is within a scene only intents following the most recently matched one are considered. Consider the following example:</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">example_conversation</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.hiHowAreYou</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.allGoodHowAreYou</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.notGreat</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.doingGreat</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.fantasticHowCanIHelp</span>
+       <span class="hljs-string">...</span>
+</code></pre>
+<p>In the scene above the user is greeting the bot with <code>hiHowAreYou</code>, and the bot replies with an <code>allGoodHowAreYou</code> intent. The user can then either provide a positive response (<code>notGreat</code>) or a negative response (<code>doingGreat</code>). Either one of those intents is a valid next intent for this conversation design. If one of those two intents comes through, and because there are no other conditions on the intent exchage the bot will reply with <code>fantasticHowCanIHelp</code>. A more nuanced conversation, of course,  would place conditions on the bot's response based on the sentiment within the user's reply.</p>
+<p>Intent can also connect scenes by <em>spanning</em> across scenes. moving forward the conversation. This can be achieved by the <code>scene</code> directive.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">example_conversation</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.opening_intent</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app_opening_intent_response</span>
+            <span class="hljs-attr">scene:</span> <span class="hljs-string">second_scene</span>
+    <span class="hljs-attr">second_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.closing_intent</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.closing_intent_response</span>
+            <span class="hljs-attr">completes:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<p>In the snippet above when the bot responds with <code>intent.app_opening_intent_response</code>, the conversation moves from <code>opening_scene</code> to <code>second_scene</code>.</p>
+<p>Intents can also have additional directives which will be explained in the sections below.</p>
+<h3><a class="anchor" aria-hidden="true" id="opening-intents"></a><a href="#opening-intents" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Opening intents</h3>
+<p>As mentioned above, each conversation must have at least one scene and this scene must be called <code>opening_scene</code>. The first incoming intents of this opening scene are known as opening intents.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">example_conversation</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.opening_intent</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.my_other_intent</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app_opening_intent_response</span>
+       <span class="hljs-string">...</span>
+</code></pre>
+<p>In this example either <code>intent.app.opening_intent</code> or <code>intent.app.my_other_intent</code> will be selected as the first incoming intent of example_conversation.</p>
+<p>Out of the box, OpenDialog comes pre-configured with two such intents and conversations handling such intents are currently <em>expected</em> for OpenDialog web-based chat to function as expected. The core opening intents are:</p>
+<ul>
+<li><code>intent.core.welcome</code></li>
+<li><code>intent.core.NoMatch</code></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="intentcorewelcome"></a><a href="#intentcorewelcome" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>intent.core.welcome</h4>
+<p>This is the default intent that will be sent by OpenDialog webchat when a user opens the chat window. If you have a different intent that you would prefer to be used, you can update this in the Interpreter Engine configuration file by changing the mapping for the <code>WELCOME</code>callback.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">welcome_conversation</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.core.welcome</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.welcome_response</span>
+       <span class="hljs-string">...</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="intentcorenomatch"></a><a href="#intentcorenomatch" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>intent.core.NoMatch</h4>
+<p>This is the intent that OpenDialog will send if it isn’t able to match a user’s utterance to any other possible incoming intent. This <em>no_match_conversation</em> can be treated as the default catch-all conversation for a no match. However, if you use an intent.core.NoMatch within your own conversations those will take priority and allow you to provide more context specific no match messages back to the user.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">no_match_conversation</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.core.NoMatch</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.no_match_response</span>
+       <span class="hljs-string">...</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="completing-intents"></a><a href="#completing-intents" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Completing intents</h3>
+<p>To allow users to move from one conversation to another, each conversation must eventually end. This can be achieved by denoting completing intents using the <code>completes</code> directive. Completing intents are intents that once matched, will end the current conversation.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">example_conversation</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.openingIntent</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.openingIntentResponse</span>
+            <span class="hljs-attr">completes:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="virtual-intents"></a><a href="#virtual-intents" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Virtual intents</h3>
+<p>Virtual intents allow you to <em>simulate</em> an incoming intent in absence of an actual incoming intent from a user. You are essentially asking OpenDialog to behave <em>as if</em> the user said something, without the user having said that. This can be useful if you wish to skip requiring the user to give input for some reason or, in general, where you can confidently skip a part of the conversation because of pre-existing contextual information.</p>
+<p>To specify a virtual intent, the <code>u_virtual</code> directive can be added to an outgoing intent containing the intent name to be simulated.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">create_task_conversation</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.orderAPizzaWithoutType</span>
+            <span class="hljs-attr">scene:</span> <span class="hljs-string">select_pizza_type</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.orderAPizza</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.pizzaIsOnItsWay</span>
+            <span class="hljs-attr">completes:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-attr">select_pizza_type:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.whatPizzaWouldYouLike</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.PizzaType</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.pizzaTypeConfirm</span>
+            <span class="hljs-attr">scene:</span> <span class="hljs-string">opening_scene</span>
+            <span class="hljs-attr">u_virtual:</span>
+              <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.orderAPizza</span>
+</code></pre>
+<p>For example in the above snippet, there is a conversation that allows a user to order a pizza. We anticipate that the user may or may not specify the pizza type directly in their utterance and capture that with two different intents (there is a more sophisticated solution to this problem but this serves as an example for virtual intents).</p>
+<p>If the user intent is <code>orderAPizza</code> then then bot will reply with <code>pizzaIsOnItsWay</code> and the conversation ends there. If, however, the intent from the user is <code>orderPizzaWithoutType</code> we then move to the <code>select_pizza_type</code> scene where the bot asks the user for the pizza type and confirms it.</p>
+<p>With a type locked in we now want to tell the user that the pizza is on its way. So we move the conversation back to the <code>opening_scene</code> and use a <code>u_virtual</code> intent to make the conversational engine respond to the user <em>as if</em> the user had ordered a pizza with a type specified. This means we only need to have one <code>pizzaIsOneItsWay</code> intent and the <code>u_virtual</code> shortcut allows us to return to a conversational state after collecting missing information and continue the conversation as if the information was always there to start with.</p>
+<h3><a class="anchor" aria-hidden="true" id="repeating-intents"></a><a href="#repeating-intents" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Repeating intents</h3>
+<p>Repeating intents enable a set of intents to loop. An incoming intent that is marked with the <code>repeating</code> directive will be matched as per usual, however after the bot has replied with its outgoing intent, the conversation will be reset to the position it was prior to the repeatable incoming intent.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">create_task_conversation</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.createTasks</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.createTasksResponse</span>
+            <span class="hljs-attr">scene:</span> <span class="hljs-string">create_task_scene</span>
+    <span class="hljs-attr">create_tasks_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.taskName</span>
+            <span class="hljs-attr">repeating:</span> <span class="hljs-literal">true</span>
+            <span class="hljs-attr">interpreter:</span> <span class="hljs-string">interpreter.app.taskName</span>
+            <span class="hljs-attr">expected_attributes:</span>
+              <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">session.task_name</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.noTaskName</span>
+            <span class="hljs-attr">interpreter:</span> <span class="hljs-string">interpreter.app.taskName</span>
+            <span class="hljs-attr">scene:</span> <span class="hljs-string">end_scene</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.task_created</span>
+    <span class="hljs-attr">end_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.endTaskCreation</span>
+            <span class="hljs-attr">completes:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<p>In the above snippet the <code>intent.app.taskName</code> intent is a repeating intent. When a user sends <code>intent.app.taskName</code>, the bot replies (as usual) with <code>intent.app.taskCreated</code>, however after this the conversation will then jump back to its state prior to receiving the user’s incoming intent. The next valid intents will again be <code>intent.app.taskName</code> or <code>intent.app.noTaskName</code>, and this can be repeating over and over until <code>intent.app.noTaskName</code> is sent by the user.</p>
+<p>This allows us to design a conversation where a user keeps providing tasks that are added to some sort of list until the user decides to break out of it.</p>
+<h2><a class="anchor" aria-hidden="true" id="interpreters"></a><a href="#interpreters" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interpreters</h2>
+<p>When a user says something we need to <em>interpret</em> that in order to match it to an intent. OpenDialog allows each intent to define what interpreter should be used to interpret it. Interpreters take input in the form of an utterance (eg. text, button value, form, etc) and provide as output a matching intent with a confidence score and optional attributes.</p>
+<p>By default OpenDialog sets <code>interpreter.core.callbackInterpreter</code>as the default interpreter for all incoming intents. This means that if you would like the Callback Interpreter to interpret an intent, you do not need to specify it. If you would like interpretation to be carried about by a non-default interpreter, you must specify it on an outgoing intent by using the <code>interpreter</code> directive.</p>
+<h3><a class="anchor" aria-hidden="true" id="confidence"></a><a href="#confidence" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Confidence</h3>
+<p>The <code>confidence</code> directive can be used to indicate a minimum confidence score that the interpreter must produce for the given intent to match. If this directive is omitted, it will default to 1 which means that the interpreter will have to be 100% certain that the given intent matches.</p>
+<h3><a class="anchor" aria-hidden="true" id="expected-attributes"></a><a href="#expected-attributes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Expected Attributes</h3>
+<p>The interpreted intent can also be told to store attributes from the interpretation by specifying the <code>expected_attributes</code> directive. This can take an array of attribute names prefixed by a context name. This maps to entity extraction for interpreters such as Microsoft LUIS or Google Dialogflow.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">example_conversation</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.openingIntent</span>
+            <span class="hljs-attr">interpreter:</span> <span class="hljs-string">interpreter.core.luis</span>
+            <span class="hljs-attr">confidence:</span> <span class="hljs-number">0.75</span>
+            <span class="hljs-attr">expected_attributes:</span>
+              <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">session.first_name</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.openingIntentResponse</span>
+            <span class="hljs-attr">completes:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<p>In the snippet above <code>intent.app.openingIntent</code> is interpreted by the built-in Microsoft LUIS Interpreter (<code>interpreter.core.luis</code>).  In this example <code>intent.app.openingIntent</code> can include a <code>first_name</code> attribute, which the markup specifies should be stored in the context called <code>session</code>. If LUIS returned a confidence lower than 0.75, <code>intent.app.openingIntent</code> <strong>would not</strong> be matched and OpenDialog would instead match <a href="/docs/cdl#intentcorenomatch"><code>intent.core.NoMatch</code></a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="conditions"></a><a href="#conditions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Conditions</h2>
+<p>Conditions can be used to ensure that only specific intents are considered for matching. They can be specified by using the <code>conditions</code> directive, which must contain an array of <code>condition</code> objects. If multiple conditions are given for a single intent they are combined on an <code>AND</code> basis. Conditions can used on both incoming and outgoing intents, however their behaviours differ slightly.</p>
+<blockquote>
+<p>Conditions can also be used on conversations (if conditions are not met then the entire conversation is not considered) and they can be used on messages (which we will discuss in subsequent sections)</p>
+</blockquote>
+<p>Conditions on incoming intents are evaluated after interpretation, which means that OpenDialog will have interpreted the user's utterance (but not yet have matched to an incoming intent). The conditions of these potential intents are then evaluated, with the first passing intent being selected. This allows conversation designers to specify conditions using attributes of the interpreted intents. This can be done by using the built-in <code>_intent</code> context which will be temporarily populated with the expected attributes of the intent.</p>
+<p>For outgoing intents, conditions are evaluated first. Conditions are, currently, the only way to instruct OpenDialog to choose between a consecutive grouping of outgoing intents.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">example_conversation</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.openingIntent</span>
+            <span class="hljs-attr">scene:</span> <span class="hljs-string">appropriate_price_scene</span>
+            <span class="hljs-attr">interpreter:</span> <span class="hljs-string">interpreter.core.luis</span>
+            <span class="hljs-attr">confidence:</span> <span class="hljs-number">0.75</span>
+            <span class="hljs-attr">expected_attributes:</span>
+              <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">item.price</span>
+            <span class="hljs-attr">conditions:</span>
+              <span class="hljs-bullet">-</span> <span class="hljs-attr">condition:</span>
+                  <span class="hljs-attr">operation:</span> <span class="hljs-string">gte</span>
+                  <span class="hljs-attr">attributes:</span>
+                    <span class="hljs-attr">attribute:</span> <span class="hljs-string">_intent.price</span>
+                  <span class="hljs-attr">parameters:</span>
+                    <span class="hljs-attr">value:</span> <span class="hljs-number">10</span>
+              <span class="hljs-bullet">-</span> <span class="hljs-attr">condition:</span>
+                  <span class="hljs-attr">operation:</span> <span class="hljs-string">lte</span>
+                  <span class="hljs-attr">attributes:</span>
+                    <span class="hljs-attr">attribute:</span> <span class="hljs-string">_intent.price</span>
+                  <span class="hljs-attr">parameters:</span>
+                    <span class="hljs-attr">value:</span> <span class="hljs-number">50</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.openingIntent</span>
+            <span class="hljs-attr">interpreter:</span> <span class="hljs-string">interpreter.core.luis</span>
+            <span class="hljs-attr">confidence:</span> <span class="hljs-number">0.75</span>
+            <span class="hljs-attr">expected_attributes:</span>
+              <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">item.price</span>
+       <span class="hljs-string">...</span>
+</code></pre>
+<p>In the above snippet there are two instances of <code>intent.app.openingIntent</code>, both of which use the LUIS interpreter and expect a <code>price</code> attribute. If the <code>price</code> attribute value is greater than or equal (<code>gte</code> operation) to 10 and less than or equal (<code>lte</code> operation) to 50, then the user will be taken into <code>appropriate_price_scene</code>, otherwise they will remain in <code>opening_scene</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="actions"></a><a href="#actions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Actions</h2>
+<p>If you have some functionality that should occur following the succesful identification and matching of an intent, you can associate that intent within the conversation to an <em>action</em>. Actions accept <em>input attributes</em> and can return <em>output attributes</em>. Actions themselves are agnostic to the contexts that these attributes belong to (similar to how expected attributes work for <a href="conversational_markup.md#interpreters">interpreters</a>).</p>
+<p>Actions can be specified using the <code>action</code> directive, which contains an object with <code>id</code>, <code>input_attributes</code> &amp; <code>output_attributes</code> properties.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">conversation:</span>
+  <span class="hljs-attr">id:</span> <span class="hljs-string">example_conversation</span>
+  <span class="hljs-attr">scenes:</span>
+    <span class="hljs-attr">opening_scene:</span>
+      <span class="hljs-attr">intents:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">u:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.openingIntent</span>
+            <span class="hljs-attr">action:</span>
+              <span class="hljs-attr">id:</span> <span class="hljs-string">action.core.example</span>
+              <span class="hljs-attr">input_attributes:</span>
+                <span class="hljs-bullet">-</span> <span class="hljs-string">user.first_name</span>
+                <span class="hljs-bullet">-</span> <span class="hljs-string">user.last_name</span>
+              <span class="hljs-attr">output_attributes:</span>
+                <span class="hljs-bullet">-</span> <span class="hljs-string">user.full_name</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-attr">b:</span>
+            <span class="hljs-attr">i:</span> <span class="hljs-string">intent.app.openingIntentResponse</span>
+            <span class="hljs-attr">completes:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<p>In the above snippet when <code>intent.app.openingIntent</code> is matched, OpenDialog will perform <code>action.core.example.</code> It takes input of the <code>first_name</code> and <code>last_name</code> attributes from the <code>user</code> context, and outputs a <code>full_name</code> attribute into the same context.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/attributes"><span class="arrow-prev">← </span><span>Attributes &amp; Contexts</span></a><a class="docs-next button" href="/docs/creating_a_conversation"><span>Creating a conversation</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#conversations">Conversations</a></li><li><a href="#scenes">Scenes</a></li><li><a href="#intents">Intents</a><ul class="toc-headings"><li><a href="#opening-intents">Opening intents</a></li><li><a href="#completing-intents">Completing intents</a></li><li><a href="#virtual-intents">Virtual intents</a></li><li><a href="#repeating-intents">Repeating intents</a></li></ul></li><li><a href="#interpreters">Interpreters</a><ul class="toc-headings"><li><a href="#confidence">Confidence</a></li><li><a href="#expected-attributes">Expected Attributes</a></li></ul></li><li><a href="#conditions">Conditions</a></li><li><a href="#actions">Actions</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/what_is_open_dialog">Docs</a></div><div><h5>Community</h5><a href="https://twitter.com/opendialogAI" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/opendialogai">Github</a></div></section><section class="copyright"><a href="https://opendialog.ai">OpenDialog</a> is created by <a href="https://greenshootlabs.com">GreenShoot Labs</a></section><section class="copyright">Copyright © 2020 GreenShoot Labs</section></footer></div></body></html>

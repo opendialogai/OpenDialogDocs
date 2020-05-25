@@ -1,7 +1,8 @@
 {
   "docs": {
   	"Introduction" : [
-  		"what_is_open_dialog"
+  		"what_is_open_dialog",
+      "opendialog_architecture"
   	],
     "Designing Conversations": [
     	"conversational_applications",

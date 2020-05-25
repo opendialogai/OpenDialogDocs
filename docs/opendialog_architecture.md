@@ -1,22 +1,22 @@
 ---
 id: opendialog_architecture
 title: OpenDialog Architecture
-sidebar_label: architecture
+sidebar_label: OpenDialog Architecture
 ---
 
-## OpenDialog for Developers
+## OpenDialog Architecture
 
-OpenDialog is a [Laravel](https://laravel.com) application with a MySQL backend for user management and content management and a [Dgraph](https://dgraph.com) backend (a graph-based database written in Go) for conversation management and conversational analytics. 
+OpenDialog is a [Laravel](https://laravel.com) application with a MySQL backend for user management and content management and a [Dgraph](https://dgraph.io) backend (a graph-based database written in Go) for conversation management and conversational analytics. 
 
 ### Main Components
 
 Below is a brief description of the main components of OpenDialog. 
 
-- **Conversation Description Language** - this is a [Yaml-based markup format](conversation_markup.md) that we use to describe conversations. The aim is to make it as simple as possible to describe potentially complex conversations that can deal with changing context and variations in user input.
+- **Conversation Description Language** - this is a [YAML-based format](cdl.md) that is used to describe conversations. The aim is to make it as simple as possible to describe potentially complex conversations that can deal with changing context and variations in user input. A conversation in OpenDialog captures a possible set of interaction and it treats the application (the bot) and the user as two agents communicating. Participants in conversations exchange _intents_. User utterances are mapped to intents on the way in and bot intents are mapped to messages on the way out. 
 
-- **Conversation Builder** - the conversation builder transforms that Yaml-based markup into a graph-based representation of a conversation that is stored in a graph database - we use [Dgraph](https://dgraph.com). It also helps the user to design _sensible_ conversations. By analysing the conversation it can identify potential pitfalls and suggest changes. 
+- **Conversation Builder** - the conversation builder transforms that YAML-based markup into a graph-based representation of a conversation that is stored in a graph database - we use [Dgraph](https://dgraph.com) for this. One of the aims of OpenDialog is to support the design of sensible and complex conversations. We believe that the conversational design tool needs to become an active participant in conversational design, handling some of the complexity. That is why we support an [expressive, graph-based format](conversational_model.md) that can be easily manipulated. We have some way to go towards that goal, but the graph-based format coupled with the Conversation Description Language already makes it simpler to capture complex scenarios in repeatable way.
 
-- **Conversation Engine** - the conversation engine "runs" our conversations. It's the heart of OpenDialog. It determines, based on incoming utterances and overall state, what the next actions and outgoing messages should be.
+- **Conversation Engine** - the conversation engine "runs" our conversations. It's the heart of OpenDialog. It determines, based on incoming utterances and overall state, what the next actions and outgoing messages should be. The next section discusses this further.
 
 - **Action Engine** - the action engine performs actions defined within conversations. It interfaces with the conversation engine and the context engine to update context and allow conversations to proceed taking into account the results of actions. Actions are the main way our conversational applications interface with external systems.
 
@@ -40,7 +40,7 @@ It all starts with an incoming message at one of the OpenDialog sensors.
 Each sensor deals with a specific conversational interface platform and converts that message to an OpenDialog Utterance. Sensors listen at a specific endpoint (for webchat that is `incoming\webchat`) and deal with any platform specific authentication/authorisation/validation issues. 
 
 #### Convert to Utterance
-The SensorEngine then converts that message to an Utterance that OpenDialog can understand. An Utterance represents what the user said (or did) and also carries relevant contextual information about the platform that originated that utterance. The Utterance is passed to the OpenDialog Controller that orchestrates overall activity from this point onwards. 
+The SensorEngine then converts that message to an Utterance that OpenDialog can understand. An Utterance represents what the user said (or did - i.e. an event) and also carries relevant contextual information about the platform that originated that utterance. The Utterance is passed to the OpenDialog Controller that orchestrates overall activity from this point onwards. 
 
 #### Determine what to reply
 

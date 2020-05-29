@@ -206,5 +206,7 @@ The result when we test it is:
 ---
 
 
+## Different message types
 
+In the examples above we've used plain text messages and messages with buttons. OpenDialog supports a wide range of message types and the [next section](message_markup.md) provides a comprehensive guide through them. 
 

@@ -4,8 +4,9 @@ title: Message Markup
 sidebar_label: Message Markup
 ---
 
-OpenDialog uses a custom XML style mark up language for describing message templates. The message mark up is platform agnostic meaning it will compile to the correct message format for all supported message platforms.
-Not all message platforms support all message types, so in some cases the resulting message will differ between platforms. This page describes what is currently supported in the message template language with an example together with the resulting message on the webchat platform.
+In OpenDialog the aim for message markup is to provide a single way of writing messages that will then be automatically translated into the appropriate format for the frontend platform that should receive and transmit the message to the user. 
+
+OpenDialog uses a custom XML style markup language for describing message templates. Not all message platforms support all message types, so in some cases the resulting message will differ between platforms. This page describes what is currently supported in the message template language with an example together with the resulting message on the webchat platform.
 
 ## Common to all messages
 
@@ -23,16 +24,10 @@ The message element can optionally contain a `disable_text` property to turn off
 <message disable_text="1">
 </message>
 ```
-Example message with user text disabled and bot avatar turned off:
-![Disable Text](assets/messages/disable-text.png "Disable Text")
+Example messages with user text enabled and then disabled.
 
-### Disabling Bot Avatar
-Another option on messages is to hide the bot avatar. When this is set on a message no bot avatar is shown, even if it is turn on in the webchat settings
+<img src="assets/messages/simple-messages.png" alt="Simple Messages" width="700px" />
 
-```xml
-<message disable_avatar="1">
-</message>
-```
 
 ## Supported Message Types
 
@@ -42,49 +37,90 @@ We currently support 12 message types in the message builder:
 
 A plain message with only text. Specially formatted links can also be included in the text body 
 
-```
+```xml
+<message>
 <text-message>{message-text}</text-message>
+</message>
 ```
 
-Where message text can contain links in the following format:
+
+#### Example
+
+<img src="assets/messages/text-message.png" alt="Simple Message" width="400px" />
 
 ```xml
-<link new_tab="true|false">
-    <url>{url}</url>
-    <text>{text}</text>
-</link>
+<message>
+  <text-message> 
+    Hello, this is a text message.
+  </text-message>
+</message>
+
 ```
+
+Messages can also contain URLs in the text - that will linkified and there is also support for an explicit link at the end of a message. 
+
+```xml
+<message>
+    <text-message> 
+      You can have a link straing in text like this: hey go to greenshootlabs.com or you can do this:
+      <link new_tab="true">
+        <url>https://docs.opendialog.ai</url>
+        <text>Read the OpenDialog Docs</text>
+      </link>
+  </text-message>
+</message>
+```
+
+<img src="assets/messages/message-with-link.png" alt="Message with link" width="400px" />
+
+
+
+Links like `greenshootlabs.com` in the message text will be turned to links as well. 
 
 There is no support at the moment for any other formatting such as bold, italics etc
 
-Example text message
-![Text Message](assets/messages/text-message.png "Text Message")
 
 ### Image Messages
 
 Displays an image message. Optionally, the image can also be a link that can optionally open in a new tab if the `url` property is included.
 
 ```xml
-<image-message>
-    <src>{img_src}</src>
-    <url new_tab="{true|false}">{url}</url>
-</image-message>
+<message>
+    <image-message>
+        <src>{img_src}</src>
+        <url new_tab="{true|false}">{url}</url>
+    </image-message>
+</message>
 ```
-![Image Message](assets/messages/image-message.png "Image Message")
+
+#### Example
+
+```xml
+<message>
+    <image-message> 
+      <src>https://docs.opendialog.ai/img/od-logo-with-credit.jpg</src>
+      <url new_tab="true">https://docs.opendialog.ai</url>
+    </image-message>
+</message>
+```
+
+<img src="assets/messages/image-message.png" alt="Image message" width="400px" />
 
 ### Button Messages
 
 Button messages allow you to provide the user a number of options to select as a response. The basic mark up is:
 
 ```xml
-<button-message>
-	<text>{button message text}</text>
-    <external>true|false</external>
-    <clear_after_interaction>true|false</clear_after_interaction>
-</button-message>
+<message>
+    <button-message>
+	   <text>{button message text}</text>
+        <external>true|false</external>
+        <clear_after_interaction>true|false</clear_after_interaction>
+    </button-message>
+</message>
 ```
 
-Setting the `external` property to true results in a the message buttons appearing outside of the button message (this defaults to false if not set)
+Setting the `external` property to true results in a the message buttons appearing outside of the button message (this defaults to false if not set).
 
 Setting the `clear_after_interaction` property to false means that the buttons will remain visible to the user after being interacted with
 
@@ -97,7 +133,7 @@ OpenDialog has built in support for 4 types of message:
 ##### Callback buttons
 
 Callback buttons will send  a `callback_id` (and optionally a `value`) when interacted with by the user that will move the conversation forward.
-Make sure that any `callback_id` you use in a button response is mapped to an intent in the interpreter engine config!
+Make sure that any `callback_id` you use in a button response is mapped to an intent in the interpreter engine config.
 
 ```xml
     <button>
@@ -113,7 +149,45 @@ Values can be optionally set on callback buttons to add some extra context to th
         
 where `attribute_name` should be the ID of an attribute that has already been defined in the system.
 
-When passing through the Callback Interpreter, button values will be parsed and an attribute will be returned with the value set as per the button value
+When passing through the Callback Interpreter, button values will be parsed and an attribute will be returned with the value set as per the button 
+
+###### Example
+
+Here is are examples of a message with one button and two buttons. Clicking on the button would cause that callback value to be sent back to OpenDialog which could then be matched with an incoming intent. 
+
+```xml
+
+<message>
+    <button-message>
+        <text> A bit of explainer text at the top </text>
+        <button> 
+          <text>Click me!</text>
+          <callback>intent.app.startAConversations</callback>
+        </button>
+    </button-message>
+</message>
+```
+
+<img src="assets/messages/one-button-message.png" alt="One Button Message" width="400px" />
+
+
+```xml
+
+<message>
+    <button-message>
+        <text> A bit of explainer text at the top </text>
+        <button> 
+          <text>Click me!</text>
+          <callback>intent.app.startAConversations</callback>
+        </button>
+        <button> 
+          <text>Or click me!</text>
+          <callback>intent.app.startADifferentConversations</callback>
+        </button>
+    </button-message>
+</message>
+```
+<img src="assets/messages/two-button-message.png" alt="Two Button Message" width="400px" />
 
 ##### Link buttons
 
@@ -126,6 +200,29 @@ Links buttons are used to create links to other web pages. The `link_new_tab` el
         <link_new_tab>true|false</link_new_tab>
     </button>
 ```
+
+##### Example
+
+```xml
+<message>
+    <button-message>
+        <text> Here are some very useful resources for you. </text>
+        <button> 
+          <text>Wikipedia</text>
+          <link>https://wikipedia.org</link>
+          <link_new_tab>true</link_new_tab>
+        </button>
+        <button> 
+          <text>W3C</text>
+          <link>https://w3.org.org</link>
+          <link_new_tab>true</link_new_tab>
+        </button>
+    </button-message>
+</message>
+```
+
+<img src="assets/messages/button-with-links.png" alt="Link Button Message" width="400px" />
+
 
 ##### Click to Call buttons
 
@@ -148,8 +245,6 @@ Tab Switch buttons should only be used for the OD Webchat platform in conjunctio
    <tab_switch>true</tab_switch>
 </button>
 ```
-Example button message
-![Button Message](assets/messages/button-message.png "Button Message")
 
 ### Rich messages
 
@@ -174,6 +269,25 @@ Where buttons can be any of the buttons described above.
     </image>
 </rich-message>
 ```
+
+#### Example
+
+```xml
+<message>
+    <rich-message>
+        <title>Rich Message</title>
+        <subtitle>With a subtitle</subtitle>
+        <text>Some engaging text</text>
+        <image>
+            <src>https://docs.opendialog.ai/img/od-logo-with-credit.jpg</src>
+            <url new_tab="true">https://docs.opendialog.ai</url>
+        </image>
+    </rich-message>
+</message>
+```
+<img src="assets/messages/rich-message.png" alt="Rich Message" width="400px" />
+
+
 
 ### Form messages
 
@@ -275,7 +389,7 @@ This form message example was created with the following XML:
 ### Empty Messages
 
 This is needed so an intent can have a matching template that doesn't result in a message being sent to the user. This may not be supported on all platforms.
-Empty messages can be useful to add to intents that we want to match for a user, but only send a message if certain conditions are met - for example using the standard `intent.core.welcome` to only send a message if the user was seen more than 
+Empty messages can be useful to add to intents that we want to match for a user, but only send a message if certain conditions are met - for example using the standard `intent.core.welcome` to only send a message if the user was seen more than once.
 
 ```xml
 <empty-message/>
@@ -373,14 +487,17 @@ CTA messages can only contain text
     {text}
 </cta-messsaeg>
 ```
+---
+<img src="assets/messages/cta-message.png" alt="CTA message" width="400px">
 
-![CTA Message](assets/messages/cta-message.png "CTA Message")
+---
+
 
 ### Hand to Human messages
 
-Hand to human messages are intended to be used to inform OpenDialog that the handling of chat has been taken over by a live human. In OpenDialog webchat, this means that new messages sent by the user are not sent to the `incoming/webchat` endpoint, but are handled by an external system.
+Hand to human messages are intended to be used to inform OpenDialog that the handling of chat has been taken over by another channel (typically a human). In OpenDialog webchat, this means that new messages sent by the user are not sent to the `incoming/webchat` endpoint, but are handled by an external system.
 
-The hand to human process and how to handle this within OpenDialog is documented separately.
+> Documentation for handling hand-to-human messages is being developed.
 
 Hand to human messages contain a number of `data` elements that have a unique name specifying what they are for. This way, any custom data payload can bve sent with hand to human messages
 
@@ -389,58 +506,3 @@ Hand to human messages contain a number of `data` elements that have a unique na
     <data name="{name_attribute}">{value}</data>
 </hand-to-human-message>
 ```
-
-## Example
-
-This is an example messages template
-
-```xml
-<message disable_text="true">
-
-    <text-message>
-
-        Click the link
-
-        <link new_tab="true">
-
-            <url>www.opendialog.ai</url>
-
-            <text>OpenDialog</text>
-
-        </link>
-
-    </text-message>
-
-    <button-message>
-
-        <text>Did you like that link?</text>
-
-        <button>
-
-            <text>Yes!</text>
-
-            <callback>link_response</callback>
-
-            <value>link_answer.yes</value>
-
-        </button>
-
-        <button>
-
-            <text>No!</text>
-
-            <callback>link_response</callback>
-
-            <value>link_answer.no</value>
-
-        </button>
-
-    </button-message>
-
-</message>
-
-```
-
-When rendered in the webchat widget, it would look like this:
-
-![Example Message](assets/example_message_template.png "Example Message")

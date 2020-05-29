@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Message Markup · OpenDialog - Conversation Management Platform</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="OpenDialog uses a custom XML style mark up language for describing message templates. The message mark up is platform agnostic meaning it will compile to the correct message format for all supported message platforms."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Message Markup · OpenDialog - Conversation Management Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://opendialogai.github.io/"/><meta property="og:description" content="OpenDialog uses a custom XML style mark up language for describing message templates. The message mark up is platform agnostic meaning it will compile to the correct message format for all supported message platforms."/><meta property="og:image" content="https://opendialogai.github.io/img/greenshoot.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://opendialogai.github.io/img/greenshoot.png"/><link rel="shortcut icon" href="/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://opendialogai.github.io/blog/atom.xml" title="OpenDialog - Conversation Management Platform Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://opendialogai.github.io/blog/feed.xml" title="OpenDialog - Conversation Management Platform Blog RSS Feed"/><script>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Message Markup · OpenDialog - Conversation Management Platform</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="In OpenDialog the aim for message markup is to provide a single way of writing messages that will then be automatically translated into the appropriate format for the frontend platform that should receive and transmit the message to the user. "/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Message Markup · OpenDialog - Conversation Management Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://opendialogai.github.io/"/><meta property="og:description" content="In OpenDialog the aim for message markup is to provide a single way of writing messages that will then be automatically translated into the appropriate format for the frontend platform that should receive and transmit the message to the user. "/><meta property="og:image" content="https://opendialogai.github.io/img/greenshoot.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://opendialogai.github.io/img/greenshoot.png"/><link rel="shortcut icon" href="/undefined"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://opendialogai.github.io/blog/atom.xml" title="OpenDialog - Conversation Management Platform Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://opendialogai.github.io/blog/feed.xml" title="OpenDialog - Conversation Management Platform Blog RSS Feed"/><script>
               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -62,113 +62,357 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Message Markup</h1></header><article><div><span><p>OpenDialog uses a custom XML style mark up language for describing message templates. The message mark up is platform agnostic meaning it will compile to the correct message format for all supported message platforms.
-Not all message platforms support all message types, so in some cases the resulting message will differ between platforms. This page describes what is currently supported in the message template language with an example together with the resulting message on the webchat platform.</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Message Markup</h1></header><article><div><span><p>In OpenDialog the aim for message markup is to provide a single way of writing messages that will then be automatically translated into the appropriate format for the frontend platform that should receive and transmit the message to the user.</p>
+<p>OpenDialog uses a custom XML style markup language for describing message templates. Not all message platforms support all message types, so in some cases the resulting message will differ between platforms. This page describes what is currently supported in the message template language with an example together with the resulting message on the webchat platform.</p>
 <h2><a class="anchor" aria-hidden="true" id="common-to-all-messages"></a><a href="#common-to-all-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Common to all messages</h2>
 <p>Each message template must be contained within a message block as follows:</p>
-<pre><code class="hljs"><span class="hljs-section">&lt;message&gt;</span>
-<span class="hljs-section">&lt;/message&gt;</span>
-</code></pre>
-<p>Optionally, this can contain a <code>disable_text</code> property to turn off text responses from the user (for platforms that support this feature).</p>
-<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">message</span> <span class="hljs-attr">disable_text</span>=<span class="hljs-string">"true"</span>&gt;</span>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
 </code></pre>
+<h3><a class="anchor" aria-hidden="true" id="disabling-text-input"></a><a href="#disabling-text-input" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Disabling Text Input</h3>
+<p>The message element can optionally contain a <code>disable_text</code> property to turn off text responses from the user (for platforms that support this feature).</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">message</span> <span class="hljs-attr">disable_text</span>=<span class="hljs-string">"1"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
+</code></pre>
+<p>Example messages with user text enabled and then disabled.</p>
+<p><img src="assets/messages/simple-messages.png" alt="Simple Messages" width="700px" /></p>
 <h2><a class="anchor" aria-hidden="true" id="supported-message-types"></a><a href="#supported-message-types" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Supported Message Types</h2>
-<p>We currently support 4 message types in the message builder:</p>
+<p>We currently support 12 message types in the message builder:</p>
 <h3><a class="anchor" aria-hidden="true" id="text-message"></a><a href="#text-message" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Text Message</h3>
 <p>A plain message with only text. Specially formatted links can also be included in the text body</p>
-<pre><code class="hljs">&lt;<span class="hljs-built_in">text</span>-message&gt;{message-<span class="hljs-built_in">text</span>}&lt;/<span class="hljs-built_in">text</span>-message&gt;
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">text-message</span>&gt;</span>{message-text}<span class="hljs-tag">&lt;/<span class="hljs-name">text-message</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
 </code></pre>
-<p>Where message text can contain links in the following format:</p>
-<pre><code class="hljs"><span class="xml">
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">new_tab</span>=<span class="hljs-string">true</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span></span><span class="hljs-template-variable">{url}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span></span><span class="hljs-template-variable">{text}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">link</span>&gt;</span>
+<h4><a class="anchor" aria-hidden="true" id="example"></a><a href="#example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h4>
+<p><img src="assets/messages/text-message.png" alt="Simple Message" width="400px" /></p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">text-message</span>&gt;</span> 
+    Hello, this is a text message.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">text-message</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
 
-</span></code></pre>
+</code></pre>
+<p>Messages can also contain URLs in the text - that will linkified and there is also support for an explicit link at the end of a message.</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">text-message</span>&gt;</span> 
+      You can have a link straing in text like this: hey go to greenshootlabs.com or you can do this:
+      <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">new_tab</span>=<span class="hljs-string">"true"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>https://docs.opendialog.ai<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Read the OpenDialog Docs<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">link</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">text-message</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
+</code></pre>
+<p><img src="assets/messages/message-with-link.png" alt="Message with link" width="400px" /></p>
+<p>Links like <code>greenshootlabs.com</code> in the message text will be turned to links as well.</p>
 <p>There is no support at the moment for any other formatting such as bold, italics etc</p>
 <h3><a class="anchor" aria-hidden="true" id="image-messages"></a><a href="#image-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Image Messages</h3>
 <p>Displays an image message. Optionally, the image can also be a link that can optionally open in a new tab if the <code>url</code> property is included.</p>
-<pre><code class="hljs"><span class="xml">
-<span class="hljs-tag">&lt;<span class="hljs-name">image-message</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">src</span>&gt;</span></span><span class="hljs-template-variable">{img_src}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">src</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">url</span> <span class="hljs-attr">new_tab</span>=</span></span><span class="hljs-template-variable">{true|false}</span><span class="xml"><span class="hljs-tag">&gt;</span></span><span class="hljs-template-variable">{url}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">image-message</span>&gt;</span>
-
-</span></code></pre>
-<h3><a class="anchor" aria-hidden="true" id="button-messages"></a><a href="#button-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Button Messages</h3>
-<p>Button messages allow you to provide the user a number of options to select as a response. Each button response will include a <code>callback_id</code> that will move the conversation forward.
-Make sure that any <code>callback_id</code> you use in a button response is mapped to an intent in the interpreter engine config!</p>
-<pre><code class="hljs"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button-message</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span></span><span class="hljs-template-variable">{button message text}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">button-message</span>&gt;</span>
-</span></code></pre>
-<h4><a class="anchor" aria-hidden="true" id="buttons"></a><a href="#buttons" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Buttons</h4>
-<p>Each button message can have 1 or more buttons.</p>
-<pre><code class="hljs"><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span></span><span class="hljs-template-variable">{text}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tab_switch</span>&gt;</span></span><span class="hljs-template-variable">{true|false}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">tab_switch</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span></span><span class="hljs-template-variable">{callback}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span></span><span class="hljs-template-variable">{value}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-</span></code></pre>
-<p><code>tab_switch</code> indicates that the button should switch the user to the 'comments' tab and can be used in place of a <code>value</code> and <code>callback_id</code></p>
-<p>The <code>value</code> property should be in the format <code>{attribute_name}.{value}</code> (eg age.18). This will be interpreted by OpenDialog which will create an attribute with the given name and store it in the user context.
-Remember to register the attribute name in the context engine config otherwise it will resolve to a <code>StringAttribute</code> by default.</p>
-<h3><a class="anchor" aria-hidden="true" id="empty-messages"></a><a href="#empty-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Empty Messages</h3>
-<p>This is needed so an intent can have a matching template that doesn't result in a message being sent to the user. This may not be supported on all platforms</p>
-<pre><code class="hljs">
-<span class="hljs-section">&lt;empty-message/&gt;</span>
-
-</code></pre>
-<h2><a class="anchor" aria-hidden="true" id="example"></a><a href="#example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h2>
-<p>This is an example messages template</p>
-<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">message</span> <span class="hljs-attr">disable_text</span>=<span class="hljs-string">"true"</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">text-message</span>&gt;</span>
-
-        Click the link
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">new_tab</span>=<span class="hljs-string">"true"</span>&gt;</span>
-
-            <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>www.opendialog.ai<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
-
-            <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>OpenDialog<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;/<span class="hljs-name">link</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;/<span class="hljs-name">text-message</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">button-message</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Did you like that link?<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>
-
-            <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Yes!<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
-
-            <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>link_response<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
-
-            <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>link_answer.yes<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>
-
-            <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>No!<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
-
-            <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>link_response<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
-
-            <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>link_answer.no<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;/<span class="hljs-name">button-message</span>&gt;</span>
-
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">image-message</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">src</span>&gt;</span>{img_src}<span class="hljs-tag">&lt;/<span class="hljs-name">src</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">url</span> <span class="hljs-attr">new_tab</span>=<span class="hljs-string">"{true|false}"</span>&gt;</span>{url}<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">image-message</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
-
 </code></pre>
-<p>When rendered in the webchat widget, it would look like this:</p>
-<p><img src="/docs/assets/example_message_template.png" alt="Example Message" title="Example Message"></p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/adding_a_message"><span class="arrow-prev">← </span><span>Adding a message</span></a><a class="docs-next button" href="/docs/building_an_interpreter"><span>Building an Interpreter</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#common-to-all-messages">Common to all messages</a></li><li><a href="#supported-message-types">Supported Message Types</a><ul class="toc-headings"><li><a href="#text-message">Text Message</a></li><li><a href="#image-messages">Image Messages</a></li><li><a href="#button-messages">Button Messages</a></li><li><a href="#empty-messages">Empty Messages</a></li></ul></li><li><a href="#example">Example</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/what_is_open_dialog">Docs</a></div><div><h5>Community</h5><a href="https://twitter.com/opendialogAI" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/opendialogai">Github</a></div></section><section class="copyright"><a href="https://opendialog.ai">OpenDialog</a> is created by <a href="https://greenshootlabs.com">GreenShoot Labs</a></section><section class="copyright">Copyright © 2020 GreenShoot Labs</section></footer></div></body></html>
+<h4><a class="anchor" aria-hidden="true" id="example-1"></a><a href="#example-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h4>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">image-message</span>&gt;</span> 
+      <span class="hljs-tag">&lt;<span class="hljs-name">src</span>&gt;</span>https://docs.opendialog.ai/img/od-logo-with-credit.jpg<span class="hljs-tag">&lt;/<span class="hljs-name">src</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">url</span> <span class="hljs-attr">new_tab</span>=<span class="hljs-string">"true"</span>&gt;</span>https://docs.opendialog.ai<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">image-message</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
+</code></pre>
+<p><img src="assets/messages/image-message.png" alt="Image message" width="400px" /></p>
+<h3><a class="anchor" aria-hidden="true" id="button-messages"></a><a href="#button-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Button Messages</h3>
+<p>Button messages allow you to provide the user a number of options to select as a response. The basic mark up is:</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button-message</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>{button message text}<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">external</span>&gt;</span>true|false<span class="hljs-tag">&lt;/<span class="hljs-name">external</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">clear_after_interaction</span>&gt;</span>true|false<span class="hljs-tag">&lt;/<span class="hljs-name">clear_after_interaction</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button-message</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
+</code></pre>
+<p>Setting the <code>external</code> property to true results in a the message buttons appearing outside of the button message (this defaults to false if not set).</p>
+<p>Setting the <code>clear_after_interaction</code> property to false means that the buttons will remain visible to the user after being interacted with</p>
+<h4><a class="anchor" aria-hidden="true" id="buttons"></a><a href="#buttons" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Buttons</h4>
+<p>A button message can contain 1 or more buttons for the user to interact with (some platforms have different restrictions on the number of buttons per message)
+Each button must define a <code>text</code> element to specify the text that should be shown to the user.</p>
+<p>OpenDialog has built in support for 4 types of message:</p>
+<h5><a class="anchor" aria-hidden="true" id="callback-buttons"></a><a href="#callback-buttons" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Callback buttons</h5>
+<p>Callback buttons will send  a <code>callback_id</code> (and optionally a <code>value</code>) when interacted with by the user that will move the conversation forward.
+Make sure that any <code>callback_id</code> you use in a button response is mapped to an intent in the interpreter engine config.</p>
+<pre><code class="hljs css language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Callback Button<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>callback id<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>attribute_name.attribute_value<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<p>Values can be optionally set on callback buttons to add some extra context to the button response. The format of button values is:</p>
+<pre><code class="hljs">    attribute_name.attribute_value
+</code></pre>
+<p>where <code>attribute_name</code> should be the ID of an attribute that has already been defined in the system.</p>
+<p>When passing through the Callback Interpreter, button values will be parsed and an attribute will be returned with the value set as per the button</p>
+<h6><a class="anchor" aria-hidden="true" id="example-2"></a><a href="#example-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h6>
+<p>Here is are examples of a message with one button and two buttons. Clicking on the button would cause that callback value to be sent back to OpenDialog which could then be matched with an incoming intent.</p>
+<pre><code class="hljs css language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button-message</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span> A bit of explainer text at the top <span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span> 
+          <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Click me!<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>intent.app.startAConversations<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button-message</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
+</code></pre>
+<p><img src="assets/messages/one-button-message.png" alt="One Button Message" width="400px" /></p>
+<pre><code class="hljs css language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button-message</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span> A bit of explainer text at the top <span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span> 
+          <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Click me!<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>intent.app.startAConversations<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span> 
+          <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Or click me!<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>intent.app.startADifferentConversations<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button-message</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
+</code></pre>
+<p><img src="assets/messages/two-button-message.png" alt="Two Button Message" width="400px" /></p>
+<h5><a class="anchor" aria-hidden="true" id="link-buttons"></a><a href="#link-buttons" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Link buttons</h5>
+<p>Links buttons are used to create links to other web pages. The <code>link_new_tab</code> element can be set to true to force the links to open in a new tab. If not set, links default to opening in the same tab</p>
+<pre><code class="hljs css language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Link Button<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">link</span>&gt;</span>http://example.com<span class="hljs-tag">&lt;/<span class="hljs-name">link</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">link_new_tab</span>&gt;</span>true|false<span class="hljs-tag">&lt;/<span class="hljs-name">link_new_tab</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<h5><a class="anchor" aria-hidden="true" id="example-3"></a><a href="#example-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h5>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button-message</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span> Here are some very useful resources for you. <span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span> 
+          <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Wikipedia<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">link</span>&gt;</span>https://wikipedia.org<span class="hljs-tag">&lt;/<span class="hljs-name">link</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">link_new_tab</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">link_new_tab</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span> 
+          <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>W3C<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">link</span>&gt;</span>https://w3.org.org<span class="hljs-tag">&lt;/<span class="hljs-name">link</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">link_new_tab</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">link_new_tab</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button-message</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
+</code></pre>
+<p><img src="assets/messages/button-with-links.png" alt="Link Button Message" width="400px" /></p>
+<h5><a class="anchor" aria-hidden="true" id="click-to-call-buttons"></a><a href="#click-to-call-buttons" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Click to Call buttons</h5>
+<p>Click to call buttons are used to create buttons for telephone numbers. They created a standard format <code>tel:</code> link that depending on the user's current device and platform will start a phone call to the number given</p>
+<pre><code class="hljs css language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>CLick to Call<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">click_to_call</span>&gt;</span>02079460000<span class="hljs-tag">&lt;/<span class="hljs-name">click_to_call</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<h5><a class="anchor" aria-hidden="true" id="tab-switch-buttons"></a><a href="#tab-switch-buttons" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tab Switch buttons</h5>
+<p>Tab Switch buttons should only be used for the OD Webchat platform in conjunction with comments and indicates that the button should switch the user to the 'comments' tab</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Tab Switch<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span> 
+   <span class="hljs-tag">&lt;<span class="hljs-name">tab_switch</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">tab_switch</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="rich-messages"></a><a href="#rich-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rich messages</h3>
+<p>Rich messages allow for more control around message content and how it is displayed to the user. They can be thought of like 'card' style messages and contain any of the following elements in combination:</p>
+<ul>
+<li>Title</li>
+<li>Subtitle</li>
+<li>Text</li>
+<li>Image</li>
+<li>Buttons</li>
+</ul>
+<p>Where buttons can be any of the buttons described above.</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">rich-message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">subtitle</span>&gt;</span>Subtitle<span class="hljs-tag">&lt;/<span class="hljs-name">subtitle</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Text<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">image</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">src</span>&gt;</span>image_src<span class="hljs-tag">&lt;/<span class="hljs-name">src</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">url</span> <span class="hljs-attr">new_tab</span>=<span class="hljs-string">"true|false"</span>&gt;</span>www.example.com<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">image</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">rich-message</span>&gt;</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="example-4"></a><a href="#example-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h4>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">rich-message</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Rich Message<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">subtitle</span>&gt;</span>With a subtitle<span class="hljs-tag">&lt;/<span class="hljs-name">subtitle</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Some engaging text<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">image</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">src</span>&gt;</span>https://docs.opendialog.ai/img/od-logo-with-credit.jpg<span class="hljs-tag">&lt;/<span class="hljs-name">src</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">url</span> <span class="hljs-attr">new_tab</span>=<span class="hljs-string">"true"</span>&gt;</span>https://docs.opendialog.ai<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">image</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">rich-message</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
+</code></pre>
+<p><img src="assets/messages/rich-message.png" alt="Rich Message" width="400px" /></p>
+<h3><a class="anchor" aria-hidden="true" id="form-messages"></a><a href="#form-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Form messages</h3>
+<p>Form messages allow for user to input data in standard web form rather than text entry. When submitted, the values of the entered by the user are sent back along with the defined <code>callback</code>
+All form messages must contain the following elements:</p>
+<pre><code class="hljs css language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">form-message</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Text<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">submit_text</span>&gt;</span>Submit Text<span class="hljs-tag">&lt;/<span class="hljs-name">submit_text</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>Callback<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">auto_submit</span>&gt;</span>true|false<span class="hljs-tag">&lt;/<span class="hljs-name">auto_submit</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form-message</span>&gt;</span>
+</code></pre>
+<p>Here, the <code>text</code> value is shown at the top of the form message and the <code>submit_text</code> value is shown on the form submit button.
+When <code>auto_submit</code> is set to true, the form will automatically be submitted when the user selects a value. This works best when just 1 element is added to the form</p>
+<p>Optionally, the form message can contain a cancel button. This allows the user to tell the bot they do not want to submit the form. When clicked, the value of <code>cancel_callback</code> is sent. The cancel button can be added to a form message with the following mark up:</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">form-message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cancel_text</span>&gt;</span>Text<span class="hljs-tag">&lt;/<span class="hljs-name">cancel_text</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cancel_callback</span>&gt;</span>Callback<span class="hljs-tag">&lt;/<span class="hljs-name">cancel_callback</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form-message</span>&gt;</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="elements"></a><a href="#elements" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Elements</h4>
+<p>Form messages have support for a number of different elements (matching what is possible in a standard HTML form). All elements are defined in the same way, and there is no limit to how many can appear on a form message.</p>
+<p>Each element must define a <code>type</code> and <code>display</code>, and can optionally define <code>required</code> and <code>default_value</code>. If required is set to true, the form cannot be submitted unless the field has a value.</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">element</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">element_type</span>&gt;</span>textarea|text|number|email|select|auto_complete_select|radio<span class="hljs-tag">&lt;/<span class="hljs-name">element_type</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">display</span>&gt;</span>Display Name<span class="hljs-tag">&lt;/<span class="hljs-name">display</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">required</span>&gt;</span>true|false<span class="hljs-tag">&lt;/<span class="hljs-name">required</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">default_value</span>&gt;</span>Default Value<span class="hljs-tag">&lt;/<span class="hljs-name">default_value</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">element</span>&gt;</span>
+</code></pre>
+<p>When using <code>radio</code> or <code>select</code> elements, you must define an <code>options</code> block giving the options to be presented in the radio list or select element:</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">element</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">options</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>Key<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>Value<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">options</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">element</span>&gt;</span>
+</code></pre>
+<p>The <code>email</code> element type acts just like a <code>text</code> element, but on submission, is validated to ensure it is formatted like an email address</p>
+<p><img src="/docs/assets/messages/form-message.png" alt="Form Message" title="Form Message"></p>
+<p>This form message example was created with the following XML:</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">form-message</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Text<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">submit_text</span>&gt;</span>Submit Text<span class="hljs-tag">&lt;/<span class="hljs-name">submit_text</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>Callback<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">auto_submit</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">auto_submit</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">element</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">element_type</span>&gt;</span>select<span class="hljs-tag">&lt;/<span class="hljs-name">element_type</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>title<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">display</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">display</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">options</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>mr<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>Mr.<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>mrs<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>Mrs.<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>other<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>Other<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">options</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">element</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">element</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">element_type</span>&gt;</span>text<span class="hljs-tag">&lt;/<span class="hljs-name">element_type</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>name<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">display</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">display</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">element</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form-message</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="empty-messages"></a><a href="#empty-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Empty Messages</h3>
+<p>This is needed so an intent can have a matching template that doesn't result in a message being sent to the user. This may not be supported on all platforms.
+Empty messages can be useful to add to intents that we want to match for a user, but only send a message if certain conditions are met - for example using the standard <code>intent.core.welcome</code> to only send a message if the user was seen more than once.</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">empty-message</span>/&gt;</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="list-messages"></a><a href="#list-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>List messages</h3>
+<p>List messages allow for multiple messages be be combined into a single message for the user that is displayed as a carousel that users can scroll between. These are good for displaying multiple search results or related items.</p>
+<p>List messages work well together with rich messages, but can be used as a wrapper for any messages types.</p>
+<p>The only option available for list messages is <code>view-type</code>. This can either be <code>vertical</code> (default) or <code>horizontal</code></p>
+<p>Note - messages with very different sizes may not display well in a horizontal carousel</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">list-message</span> <span class="hljs-attr">list_type</span>=<span class="hljs-string">"horizontal"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">text-message</span>&gt;</span>{text_message}<span class="hljs-tag">&lt;/<span class="hljs-name">text-message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">image-message</span>&gt;</span>{image_message}<span class="hljs-tag">&lt;/<span class="hljs-name">image-message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">rich-message</span>&gt;</span>{rich_message}<span class="hljs-tag">&lt;/<span class="hljs-name">rich-message</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">list-message</span>&gt;</span>
+</code></pre>
+<p><img src="/docs/assets/messages/list-message.png" alt="List Message" title="List Message"></p>
+<h3><a class="anchor" aria-hidden="true" id="full-page-messages"></a><a href="#full-page-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Full page messages</h3>
+<p>Rich and Form messages can also be presented as 'full page' messages. When full page messages are received, they will take over the entire chatbot screen (depending on what is supported by each platform). For webchat full page messages, the user input is also taken over.</p>
+<h4><a class="anchor" aria-hidden="true" id="long-text-messages"></a><a href="#long-text-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Long Text messages</h4>
+<p>These messages are for a special case where a user is expected to enter more long form text and gives a larger space to do this.
+In the case of OD webchat, a Long Text message will hide the current message list and display a large input space with the message text displayed above.</p>
+<p>On submission, the user's input is sent as text along with the defined <code>callback</code></p>
+<p>Long text messages also allow for custom submit button text, confirmation text that is displayed to the user after submission and an optional character limit to limit what the user can enter</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">long-text-message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">submit_text</span>&gt;</span>Submit Text<span class="hljs-tag">&lt;/<span class="hljs-name">submit_text</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>callback<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">initial_text</span>&gt;</span>$this-&gt;initialText<span class="hljs-tag">&lt;/<span class="hljs-name">initial_text</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">placeholder</span>&gt;</span>$this-&gt;placeholder<span class="hljs-tag">&lt;/<span class="hljs-name">placeholder</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">confirmation_text</span>&gt;</span>$this-&gt;confirmationText<span class="hljs-tag">&lt;/<span class="hljs-name">confirmation_text</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">character_limit</span>&gt;</span>$this-&gt;characterLimit<span class="hljs-tag">&lt;/<span class="hljs-name">character_limit</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">long-text-message</span>&gt;</span>
+</code></pre>
+<p><img src="/docs/assets/messages/longtext-message.png" alt="Longtext Message" title="Longtext Message"></p>
+<h4><a class="anchor" aria-hidden="true" id="full-page-rich-messages"></a><a href="#full-page-rich-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Full Page Rich messages</h4>
+<p>Full page rich messages are defined in exactly the same way as standard rich messages, but can optionally define a cancel button to allow the user to move on without interacting.</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">fp-rich-message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">subtitle</span>&gt;</span>Subtitle<span class="hljs-tag">&lt;/<span class="hljs-name">subtitle</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Text<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">image</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">src</span>&gt;</span>image_src<span class="hljs-tag">&lt;/<span class="hljs-name">src</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">url</span> <span class="hljs-attr">new_tab</span>=<span class="hljs-string">"true|false"</span>&gt;</span>www.example.com<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">image</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cancel_text</span>&gt;</span>Text<span class="hljs-tag">&lt;/<span class="hljs-name">cancel_text</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">cancel_callback</span>&gt;</span>callback<span class="hljs-tag">&lt;/<span class="hljs-name">cancel_callback</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">fp-rich-message</span>&gt;</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="full-page-form-messages"></a><a href="#full-page-form-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Full Page Form messages</h4>
+<p>Full Page Form messages are defined in exactly the same way as form messages, but with a different element name:</p>
+<pre><code class="hljs css language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">fp-form-message</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Text<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">submit_text</span>&gt;</span>Submit Text<span class="hljs-tag">&lt;/<span class="hljs-name">submit_text</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>Callback<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">auto_submit</span>&gt;</span>true|false<span class="hljs-tag">&lt;/<span class="hljs-name">auto_submit</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">fp-form-message</span>&gt;</span>    
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="special-messages"></a><a href="#special-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Special Messages</h3>
+<p>The messages below do not act like standard messages that appear in a message list and history, but perform</p>
+<h3><a class="anchor" aria-hidden="true" id="cta-messages"></a><a href="#cta-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CTA messages</h3>
+<p>CTA messages are used to display content in the minimized chatbot and will only work with the OpenDialog webchat platform. Each time a CTA message is sent, the CTA text in the minimized chatbot header is updated.</p>
+<p>CTA messages can only contain text</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">cta-messsage</span>&gt;</span>
+    {text}
+<span class="hljs-tag">&lt;/<span class="hljs-name">cta-messsaeg</span>&gt;</span>
+</code></pre>
+<hr>
+<p><img src="assets/messages/cta-message.png" alt="CTA message" width="400px"></p>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="hand-to-human-messages"></a><a href="#hand-to-human-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hand to Human messages</h3>
+<p>Hand to human messages are intended to be used to inform OpenDialog that the handling of chat has been taken over by another channel (typically a human). In OpenDialog webchat, this means that new messages sent by the user are not sent to the <code>incoming/webchat</code> endpoint, but are handled by an external system.</p>
+<blockquote>
+<p>Documentation for handling hand-to-human messages is being developed.</p>
+</blockquote>
+<p>Hand to human messages contain a number of <code>data</code> elements that have a unique name specifying what they are for. This way, any custom data payload can bve sent with hand to human messages</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">hand-to-human-message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">data</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"{name_attribute}"</span>&gt;</span>{value}<span class="hljs-tag">&lt;/<span class="hljs-name">data</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">hand-to-human-message</span>&gt;</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/adding_a_message"><span class="arrow-prev">← </span><span>Adding a message</span></a><a class="docs-next button" href="/docs/building_an_interpreter"><span>Building an Interpreter</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#common-to-all-messages">Common to all messages</a><ul class="toc-headings"><li><a href="#disabling-text-input">Disabling Text Input</a></li></ul></li><li><a href="#supported-message-types">Supported Message Types</a><ul class="toc-headings"><li><a href="#text-message">Text Message</a></li><li><a href="#image-messages">Image Messages</a></li><li><a href="#button-messages">Button Messages</a></li><li><a href="#rich-messages">Rich messages</a></li><li><a href="#form-messages">Form messages</a></li><li><a href="#empty-messages">Empty Messages</a></li><li><a href="#list-messages">List messages</a></li><li><a href="#full-page-messages">Full page messages</a></li><li><a href="#special-messages">Special Messages</a></li><li><a href="#cta-messages">CTA messages</a></li><li><a href="#hand-to-human-messages">Hand to Human messages</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/what_is_open_dialog">Docs</a></div><div><h5>Community</h5><a href="https://twitter.com/opendialogAI" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/opendialogai">Github</a></div></section><section class="copyright"><a href="https://opendialog.ai">OpenDialog</a> is created by <a href="https://greenshootlabs.com">GreenShoot Labs</a></section><section class="copyright">Copyright © 2020 GreenShoot Labs</section></footer></div></body></html>

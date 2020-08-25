@@ -251,6 +251,78 @@ If the user intent is `orderAPizza` then then bot will reply with `pizzaIsOnItsW
 
 With a type locked in we now want to tell the user that the pizza is on its way. So we move the conversation back to the `opening_scene` and use a `u_virtual` intent to make the conversational engine respond to the user _as if_ the user had ordered a pizza with a type specified. This means we only need to have one `pizzaIsOneItsWay` intent and the `u_virtual` shortcut allows us to return to a conversational state after collecting missing information and continue the conversation as if the information was always there to start with. 
 
+#### Conversational Transitions
+
+Virtual intents as described above do not only have to work within a single conversation - if the outgoing bot intent they are attached to is also a `completing` intent, OpenDialog will look back at all possible opening intents from all conversations when following it.
+
+For example, consider the following conversation in which a user would like to make a reservation. The restaurant has allows booking tables at the bar for over 18s and standard restaurant bookings if under 18
+
+```yaml
+conversation:
+  id: introduction
+  scenes:
+    opening_scene:
+      intents:
+        - u:
+            i: intent.app.make_booking
+        - b:
+            i: intent.app.askAge
+        - u:
+            i: intent.app.under18
+            scene: under_18
+        - u:
+            i: intent.app.under18
+            scene: over_18
+    under_18:
+      intents:
+        - b:
+            i: intent.app.continue
+            u_virtual:
+              i: intent.app.bar_booking
+            completes: true
+    over_18:
+      intents:
+        - b:
+            i: intent.app.continue
+            u_virtual:
+              i: intent.app.restaurant_booking
+            completes: true
+``` 
+
+```yaml
+conversation:
+  id: bar_booking
+  scenes:
+    opening_scene:
+      intents:
+        - u:
+            i: intent.app.bar_booking
+        - b:
+            ...
+``` 
+
+```yaml
+conversation:
+  id: bar_booking
+  scenes:
+    opening_scene:
+      intents:
+        - u:
+            i: intent.app.restaurant_booking
+        - b:
+            ...
+``` 
+
+The `introduction` conversation will first find out the users age, and then move the user into the appropriate conversation depending on the answer. This works as the outgoing bot intent in both the `over_18` and `under_18` scenes complete the current conversation and trigger a `u_virtual` intent that matches an opening intent of another conversation.
+
+The `bar_booking` and `restaurant_booking` conversations are no longer scenes within a single conversation and can be re-used.
+
+#### Transitioning with Empty messages
+
+An intent with a `u_virtual` directive must always have an outgoing intent paired with it, however this isn't always desirable if we just want to use the `u_virtual` to transition a user to a different part of the conversation.
+
+In these cases, you can use an `<empty-message>` with the outgoing intent that results in no message being displayed to the user.
+
 ### Repeating intents
 
 Repeating intents enable a set of intents to loop. An incoming intent that is marked with the `repeating` directive will be matched as per usual, however after the bot has replied with its outgoing intent, the conversation will be reset to the position it was prior to the repeatable incoming intent.

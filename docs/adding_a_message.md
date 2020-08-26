@@ -27,7 +27,7 @@ Once the outgoing intent is created we can add message templates to it.
 
 ---
 
-A message tempalte has a name, associated conditiosn and the message mark-up. We will deal with conditions later and for now just add the simplest type of message - a text message.
+A message template has a name, associated condition and the message mark-up. We will deal with conditions later and for now just add the simplest type of message - a text message.
 
 
 ---

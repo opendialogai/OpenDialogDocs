@@ -631,7 +631,7 @@ The supported data attributes at the moment are:
 - progressText - updates the progress bar text at the top of the webchat bot to the value provided
 - teamName - Updates the current team name of the bot
 
-Meta Messages can be places anywhere in a message template and will have the same effect
+Meta Messages can be placed anywhere in a message template and will have the same effect
 
 ---
 <img src="assets/messages/meta_message.png" alt="meta message" width="400px">

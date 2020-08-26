@@ -31,7 +31,7 @@ Example messages with user text enabled and then disabled.
 
 ## Supported Message Types
 
-We currently support 12 message types in the message builder:
+We currently support several message types in the message builder:
 
 ### Text Message
 

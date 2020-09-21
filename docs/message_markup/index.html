@@ -77,7 +77,7 @@
 <p>Example messages with user text enabled and then disabled.</p>
 <p><img src="assets/messages/simple-messages.png" alt="Simple Messages" width="700px" /></p>
 <h2><a class="anchor" aria-hidden="true" id="supported-message-types"></a><a href="#supported-message-types" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Supported Message Types</h2>
-<p>We currently support 12 message types in the message builder:</p>
+<p>We currently support several message types in the message builder:</p>
 <h3><a class="anchor" aria-hidden="true" id="text-message"></a><a href="#text-message" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Text Message</h3>
 <p>A plain message with only text. Specially formatted links can also be included in the text body</p>
 <pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
@@ -128,10 +128,9 @@
 <h3><a class="anchor" aria-hidden="true" id="button-messages"></a><a href="#button-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Button Messages</h3>
 <p>Button messages allow you to provide the user a number of options to select as a response. The basic mark up is:</p>
 <pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">message</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button-message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button-message</span> <span class="hljs-attr">clear_after_interaction</span>=<span class="hljs-string">"true|false"</span>&gt;</span>
        <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>{button message text}<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">external</span>&gt;</span>true|false<span class="hljs-tag">&lt;/<span class="hljs-name">external</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">clear_after_interaction</span>&gt;</span>true|false<span class="hljs-tag">&lt;/<span class="hljs-name">clear_after_interaction</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">button-message</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">message</span>&gt;</span>
 </code></pre>
@@ -140,7 +139,7 @@
 <h4><a class="anchor" aria-hidden="true" id="buttons"></a><a href="#buttons" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Buttons</h4>
 <p>A button message can contain 1 or more buttons for the user to interact with (some platforms have different restrictions on the number of buttons per message)
 Each button must define a <code>text</code> element to specify the text that should be shown to the user.</p>
-<p>OpenDialog has built in support for 4 types of message:</p>
+<p>OpenDialog has built in support for 4 types of button:</p>
 <h5><a class="anchor" aria-hidden="true" id="callback-buttons"></a><a href="#callback-buttons" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Callback buttons</h5>
 <p>Callback buttons will send  a <code>callback_id</code> (and optionally a <code>value</code>) when interacted with by the user that will move the conversation forward.
 Make sure that any <code>callback_id</code> you use in a button response is mapped to an intent in the interpreter engine config.</p>
@@ -225,6 +224,22 @@ Make sure that any <code>callback_id</code> you use in a button response is mapp
    <span class="hljs-tag">&lt;<span class="hljs-name">tab_switch</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">tab_switch</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 </code></pre>
+<h5><a class="anchor" aria-hidden="true" id="button-types"></a><a href="#button-types" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Button Types</h5>
+<p>Buttons can be defined with a <code>type</code> that can affect how they are displayed as a button on screen. Types are added as properties of the button like this:</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"{type}"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>Click me!<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>intent.app.startAConversations<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<p>There are currently 2 types that can be used:</p>
+<ul>
+<li><code>skip</code> -  If a button in an <code>external</code> button message has type of <code>skip</code>, it will appear below the other buttons with a different appearance. This can be used in conjunction with other messages to allow a user to skip past an intent</li>
+<li><code>inline</code> - If a button in a standard button message (not <code>external</code>) has a type of <code>inline</code>, it will appear along with the button message text, inside the chat bubble.</li>
+</ul>
+<hr>
+<p>An example outgoing intent with 2 button messages, 1 external 1 not showing different button types:</p>
+<p><img src="assets/messages/button-with-links.png" alt="Link Button Message" width="400px" /></p>
+<hr>
 <h3><a class="anchor" aria-hidden="true" id="rich-messages"></a><a href="#rich-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rich messages</h3>
 <p>Rich messages allow for more control around message content and how it is displayed to the user. They can be thought of like 'card' style messages and contain any of the following elements in combination:</p>
 <ul>
@@ -353,6 +368,68 @@ Empty messages can be useful to add to intents that we want to match for a user,
 <span class="hljs-tag">&lt;/<span class="hljs-name">list-message</span>&gt;</span>
 </code></pre>
 <p><img src="/docs/assets/messages/list-message.png" alt="List Message" title="List Message"></p>
+<h4><a class="anchor" aria-hidden="true" id="date-picker-messages"></a><a href="#date-picker-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Date Picker messages</h4>
+<p>These allow the user to enter a date by selecting day, month and or year. Each of these fields can be defined as required meaning the message cannot be submitted unless the user has entered a value.</p>
+<p>The <code>min_date</code> and <code>max_date</code> fields restrict the dates that are shown to the user so that what they submit is always within that range. The dates provided should be ISO date format containing at least the year, or just the word <code>today</code>.</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">date-picker-message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>{message text}<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>{callback}<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">attribute_name</span>&gt;</span>{attribute name}<span class="hljs-tag">&lt;/<span class="hljs-name">attribute_name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">submit_text</span>&gt;</span>{submit text}<span class="hljs-tag">&lt;/<span class="hljs-name">submit_text</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">day_required</span>&gt;</span>true|false<span class="hljs-tag">&lt;/<span class="hljs-name">day_required</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">month_required</span>&gt;</span>true|false<span class="hljs-tag">&lt;/<span class="hljs-name">month_required</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">year_required</span>&gt;</span>true|false<span class="hljs-tag">&lt;/<span class="hljs-name">year_required</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">max_date</span>&gt;</span>today|yyyy-mm-dd|yyyy-mm|yyyy<span class="hljs-tag">&lt;/<span class="hljs-name">max_date</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">min_date</span>&gt;</span>today|yyyy-mm-dd|yyyy-mm|yyyy<span class="hljs-tag">&lt;/<span class="hljs-name">min_date</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">date-picker-message</span>&gt;</span>
+</code></pre>
+<hr>
+<p><img src="assets/messages/date_picker.png" alt="date picker message" width="400px"></p>
+<hr>
+<h4><a class="anchor" aria-hidden="true" id="autocomplete-message"></a><a href="#autocomplete-message" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Autocomplete message</h4>
+<p>The autocomplete message is used to create an input that will offer suggestions to a user as they start typing. This message is supported by an API that should accept a query string and respond with an array of items to show in the JSON format below:</p>
+<pre><code class="hljs css language-json">[
+  {
+    "name": "item1"
+  },
+  {
+    "name": "item2"
+  },
+  {
+    ...
+  }
+]
+</code></pre>
+<p>The message XML accepts a number of options that help the webchat component know how to construct the query to send to the API:</p>
+<ul>
+<li><code>options-endpoint.url</code> - The URL of the API to hit. This can be relative or absolute. It is often a good idea to create a local API proxy route in your OD application to be able to format responses from external sources.</li>
+<li><code>options-endpoint.params</code> - Each param in here will be added to the API url as query parameters in the format <code>?{name}={value}</code>.</li>
+<li><code>options-endpoint.query-param-name</code> - This field specifies the name to be used for the <code>query</code> query param. The value of the query param will be all characters that the user has started typing in the auto-complete box.</li>
+</ul>
+<p>So in the example below, each time the user entered a character into the input field, the following GET request would is made to fetch the next set of suggestions</p>
+<pre><code class="hljs">    /api/v4/products?name=value&amp;query={}
+</code></pre>
+<p>There are 2 text type fields <code>text</code> which will appear when the message starts showing and <code>placeholder</code> which shows in the message input box before a user starts typing</p>
+<pre><code class="hljs css language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">autocomplete-message</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>{text}<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">callback</span>&gt;</span>{callback}<span class="hljs-tag">&lt;/<span class="hljs-name">callback</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">submit_text</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">submit_text</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">options-endpoint</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>/api/v4/products<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">params</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"value"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">params</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">query-param-name</span>&gt;</span>query<span class="hljs-tag">&lt;/<span class="hljs-name">query-param-name</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">options-endpoint</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">attribute_name</span>&gt;</span>ProductName<span class="hljs-tag">&lt;/<span class="hljs-name">attribute_name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">placeholder</span>&gt;</span>Start typing<span class="hljs-tag">&lt;/<span class="hljs-name">placeholder</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">autocomplete-message</span>&gt;</span>
+</code></pre>
+<p>Autocomplete closed
+<img src="assets/messages/autocomplete_message.png" alt="auto complete message" width="400px"></p>
+<p>Autocomplete With Suggestions
+<img src="assets/messages/autocomplete_message_open.png" alt="auto complete message" width="400px"></p>
+<hr>
 <h3><a class="anchor" aria-hidden="true" id="full-page-messages"></a><a href="#full-page-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Full page messages</h3>
 <p>Rich and Form messages can also be presented as 'full page' messages. When full page messages are received, they will take over the entire chatbot screen (depending on what is supported by each platform). For webchat full page messages, the user input is also taken over.</p>
 <h4><a class="anchor" aria-hidden="true" id="long-text-messages"></a><a href="#long-text-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Long Text messages</h4>
@@ -415,4 +492,24 @@ In the case of OD webchat, a Long Text message will hide the current message lis
     <span class="hljs-tag">&lt;<span class="hljs-name">data</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"{name_attribute}"</span>&gt;</span>{value}<span class="hljs-tag">&lt;/<span class="hljs-name">data</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">hand-to-human-message</span>&gt;</span>
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/adding_a_message"><span class="arrow-prev">← </span><span>Adding a message</span></a><a class="docs-next button" href="/docs/building_an_interpreter"><span>Building an Interpreter</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#common-to-all-messages">Common to all messages</a><ul class="toc-headings"><li><a href="#disabling-text-input">Disabling Text Input</a></li></ul></li><li><a href="#supported-message-types">Supported Message Types</a><ul class="toc-headings"><li><a href="#text-message">Text Message</a></li><li><a href="#image-messages">Image Messages</a></li><li><a href="#button-messages">Button Messages</a></li><li><a href="#rich-messages">Rich messages</a></li><li><a href="#form-messages">Form messages</a></li><li><a href="#empty-messages">Empty Messages</a></li><li><a href="#list-messages">List messages</a></li><li><a href="#full-page-messages">Full page messages</a></li><li><a href="#special-messages">Special Messages</a></li><li><a href="#cta-messages">CTA messages</a></li><li><a href="#hand-to-human-messages">Hand to Human messages</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/what_is_open_dialog">Docs</a></div><div><h5>Community</h5><a href="https://twitter.com/opendialogAI" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/opendialogai">Github</a></div></section><section class="copyright"><a href="https://opendialog.ai">OpenDialog</a> is created by <a href="https://greenshootlabs.com">GreenShoot Labs</a></section><section class="copyright">Copyright © 2020 GreenShoot Labs</section></footer></div></body></html>
+<h3><a class="anchor" aria-hidden="true" id="meta-messages"></a><a href="#meta-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Meta messages</h3>
+<p>Meta messages are designed to allow the incoming message to have an effect on the conversational interface. There are a number of directives.
+Each meta message is made up of a number of <code>data</code> attributes defined as below:</p>
+<pre><code class="hljs css language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">meta-message</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">data</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"textLimit"</span>&gt;</span>50<span class="hljs-tag">&lt;/<span class="hljs-name">data</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">data</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"progressPercent"</span>&gt;</span>10<span class="hljs-tag">&lt;/<span class="hljs-name">data</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">data</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"progressText"</span>&gt;</span>Getting Started<span class="hljs-tag">&lt;/<span class="hljs-name">data</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">meta-message</span>&gt;</span>
+</code></pre>
+<p>The supported data attributes at the moment are:</p>
+<ul>
+<li>textLimit - imposes a limit on the text input to only allow a user to enter a capped number of characters</li>
+<li>progressPercent - updates the progress bar at the top of the webchat bot to the percentage provided</li>
+<li>progressText - updates the progress bar text at the top of the webchat bot to the value provided</li>
+<li>teamName - Updates the current team name of the bot</li>
+</ul>
+<p>Meta Messages can be placed anywhere in a message template and will have the same effect</p>
+<hr>
+<p><img src="assets/messages/meta_message.png" alt="meta message" width="400px"></p>
+<hr>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/adding_a_message"><span class="arrow-prev">← </span><span>Adding a message</span></a><a class="docs-next button" href="/docs/building_an_interpreter"><span>Building an Interpreter</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#common-to-all-messages">Common to all messages</a><ul class="toc-headings"><li><a href="#disabling-text-input">Disabling Text Input</a></li></ul></li><li><a href="#supported-message-types">Supported Message Types</a><ul class="toc-headings"><li><a href="#text-message">Text Message</a></li><li><a href="#image-messages">Image Messages</a></li><li><a href="#button-messages">Button Messages</a></li><li><a href="#rich-messages">Rich messages</a></li><li><a href="#form-messages">Form messages</a></li><li><a href="#empty-messages">Empty Messages</a></li><li><a href="#list-messages">List messages</a></li><li><a href="#full-page-messages">Full page messages</a></li><li><a href="#special-messages">Special Messages</a></li><li><a href="#cta-messages">CTA messages</a></li><li><a href="#hand-to-human-messages">Hand to Human messages</a></li><li><a href="#meta-messages">Meta messages</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/what_is_open_dialog">Docs</a></div><div><h5>Community</h5><a href="https://twitter.com/opendialogAI" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/opendialogai">Github</a></div></section><section class="copyright"><a href="https://opendialog.ai">OpenDialog</a> is created by <a href="https://greenshootlabs.com">GreenShoot Labs</a></section><section class="copyright">Copyright © 2020 GreenShoot Labs</section></footer></div></body></html>

@@ -31,7 +31,7 @@ Example messages with user text enabled and then disabled.
 
 ## Supported Message Types
 
-We currently support 12 message types in the message builder:
+We currently support several message types in the message builder:
 
 ### Text Message
 
@@ -112,10 +112,9 @@ Button messages allow you to provide the user a number of options to select as a
 
 ```xml
 <message>
-    <button-message>
+    <button-message clear_after_interaction="true|false">
 	   <text>{button message text}</text>
         <external>true|false</external>
-        <clear_after_interaction>true|false</clear_after_interaction>
     </button-message>
 </message>
 ```
@@ -128,7 +127,7 @@ Setting the `clear_after_interaction` property to false means that the buttons w
 A button message can contain 1 or more buttons for the user to interact with (some platforms have different restrictions on the number of buttons per message)
 Each button must define a `text` element to specify the text that should be shown to the user.
 
-OpenDialog has built in support for 4 types of message:
+OpenDialog has built in support for 4 types of button:
 
 ##### Callback buttons
 
@@ -245,6 +244,30 @@ Tab Switch buttons should only be used for the OD Webchat platform in conjunctio
    <tab_switch>true</tab_switch>
 </button>
 ```
+
+##### Button Types
+
+Buttons can be defined with a `type` that can affect how they are displayed as a button on screen. Types are added as properties of the button like this:
+
+```xml
+<button type="{type}">
+    <text>Click me!</text>
+    <callback>intent.app.startAConversations</callback>
+</button>
+```
+
+There are currently 2 types that can be used:
+
+- `skip` -  If a button in an `external` button message has type of `skip`, it will appear below the other buttons with a different appearance. This can be used in conjunction with other messages to allow a user to skip past an intent
+- `inline` - If a button in a standard button message (not `external`) has a type of `inline`, it will appear along with the button message text, inside the chat bubble.
+
+---
+
+An example outgoing intent with 2 button messages, 1 external 1 not showing different button types:
+
+<img src="assets/messages/button-with-links.png" alt="Link Button Message" width="400px" />
+
+---
 
 ### Rich messages
 
@@ -415,6 +438,87 @@ Note - messages with very different sizes may not display well in a horizontal c
 
 ![List Message](assets/messages/list-message.png "List Message")
 
+#### Date Picker messages
+
+These allow the user to enter a date by selecting day, month and or year. Each of these fields can be defined as required meaning the message cannot be submitted unless the user has entered a value.
+
+The `min_date` and `max_date` fields restrict the dates that are shown to the user so that what they submit is always within that range. The dates provided should be ISO date format containing at least the year, or just the word `today`.
+
+```xml
+<date-picker-message>
+    <text>{message text}</text>
+    <callback>{callback}</callback>
+    <attribute_name>{attribute name}</attribute_name>
+    <submit_text>{submit text}</submit_text>
+    <day_required>true|false</day_required>
+    <month_required>true|false</month_required>
+    <year_required>true|false</year_required>
+    <max_date>today|yyyy-mm-dd|yyyy-mm|yyyy</max_date>
+    <min_date>today|yyyy-mm-dd|yyyy-mm|yyyy</min_date>
+</date-picker-message>
+```
+
+---
+<img src="assets/messages/date_picker.png" alt="date picker message" width="400px">
+
+--- 
+
+
+#### Autocomplete message
+
+The autocomplete message is used to create an input that will offer suggestions to a user as they start typing. This message is supported by an API that should accept a query string and respond with an array of items to show in the JSON format below: 
+
+```json
+[
+  {
+    "name": "item1"
+  },
+  {
+    "name": "item2"
+  },
+  {
+    ...
+  }
+]
+```
+
+The message XML accepts a number of options that help the webchat component know how to construct the query to send to the API:
+
++ `options-endpoint.url` - The URL of the API to hit. This can be relative or absolute. It is often a good idea to create a local API proxy route in your OD application to be able to format responses from external sources.
++ `options-endpoint.params` - Each param in here will be added to the API url as query parameters in the format `?{name}={value}`.
++ `options-endpoint.query-param-name` - This field specifies the name to be used for the `query` query param. The value of the query param will be all characters that the user has started typing in the auto-complete box.
+
+So in the example below, each time the user entered a character into the input field, the following GET request would is made to fetch the next set of suggestions
+
+        /api/v4/products?name=value&query={}
+        
+There are 2 text type fields `text` which will appear when the message starts showing and `placeholder` which shows in the message input box before a user starts typing
+
+```xml
+  <autocomplete-message>
+   <title>{text}</title>
+   <callback>{callback}</callback>
+   <submit_text>Submit</submit_text>
+    <options-endpoint>
+      <url>/api/v4/products</url>
+      <params>
+        <param name="name" value="value" />
+      </params>
+      <query-param-name>query</query-param-name>
+    </options-endpoint>
+    <attribute_name>ProductName</attribute_name>
+    <placeholder>Start typing</placeholder>
+  </autocomplete-message>
+```
+
+Autocomplete closed
+<img src="assets/messages/autocomplete_message.png" alt="auto complete message" width="400px">
+
+
+Autocomplete With Suggestions
+<img src="assets/messages/autocomplete_message_open.png" alt="auto complete message" width="400px">
+--- 
+
 ### Full page messages
 
 Rich and Form messages can also be presented as 'full page' messages. When full page messages are received, they will take over the entire chatbot screen (depending on what is supported by each platform). For webchat full page messages, the user input is also taken over.
@@ -506,3 +610,30 @@ Hand to human messages contain a number of `data` elements that have a unique na
     <data name="{name_attribute}">{value}</data>
 </hand-to-human-message>
 ```
+
+### Meta messages
+
+Meta messages are designed to allow the incoming message to have an effect on the conversational interface. There are a number of directives.
+Each meta message is made up of a number of `data` attributes defined as below:
+
+```xml
+  <meta-message>
+    <data name="textLimit">50</data>
+    <data name="progressPercent">10</data>
+    <data name="progressText">Getting Started</data>
+  </meta-message>
+```
+
+The supported data attributes at the moment are:
+
+- textLimit - imposes a limit on the text input to only allow a user to enter a capped number of characters
+- progressPercent - updates the progress bar at the top of the webchat bot to the percentage provided
+- progressText - updates the progress bar text at the top of the webchat bot to the value provided
+- teamName - Updates the current team name of the bot
+
+Meta Messages can be placed anywhere in a message template and will have the same effect
+
+---
+<img src="assets/messages/meta_message.png" alt="meta message" width="400px">
+
+--- 

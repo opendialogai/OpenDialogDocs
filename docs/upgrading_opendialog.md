@@ -26,13 +26,15 @@ Get the version of the OpenDialog application for the [repository](https://githu
 
 If you haven't changed any core OpenDialog elements you are only likely to see merge conflicts in areas such as your composer.json. Ensure that you are adhering to all the version requirements for the OpenDialog app, resolve conflicts and do a `composer update`. This will pull in the latest versions of OpenDialog Core and OpenDialog webchat.
 
-Then make sure to do a 
+Then make sure to perform a migration:
 
-`php artisan migrate` for any database tables and data migrations.
+`php artisan migrate` 
+
+for any database tables and data migrations.
 
 ## Follow any Laravel framework upgrade instructions
 
-Depending on what Laravel framework upgrade has taken place following the upgrade of the OpenDialog application check out the [Laravel upgrade](https://laravel.com/docs/6.x/upgrade)
+Depending on what Laravel framework upgrade has taken place following the upgrade of the OpenDialog application check out the [Laravel upgrade](https://laravel.com/docs/6.x/upgrade) guide.
 
 ## Upgrade your bot
 

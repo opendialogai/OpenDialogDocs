@@ -9,7 +9,8 @@
     	"conversational_model"
    	],
     "Installing OpenDialog": [
-   	  "installing_opendialog"
+   	  "installing_opendialog",
+      "upgrading_opendialog"
    	],
     "Working with OpenDialog": [
       "attributes",

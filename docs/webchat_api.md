@@ -6,9 +6,6 @@ sidebar_label: Webchat API
 
 ## Webchat API documentation
 
-The webchat API is documented in APIary [here](https://opendialog.docs.apiary.io/)
+The webchat API is documented in Postman [here](https://documenter.getpostman.com/view/3532544/TVmLAdPF)
 
-As well as full documentation for the 3 main endpoints (`webchat-config`, `chat-init` and `incoming`) APIary provides a mock endpoint that you can consume straight away.
-The URL for this is:
-
-`https://private-anon-0d1d684d92-opendialog.apiary-mock.com`
+As well as full documentation for the 3 main endpoints (`webchat-config`, `history` and `incoming`), the postman collection can be saved locally to make real API calls against the OpenDialog Demo deploy

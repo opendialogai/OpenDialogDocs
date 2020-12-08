@@ -21,7 +21,7 @@ In order to identify in what context an attribute should be stored in we namespa
 ### Core Contexts
 "Out of the box" OpenDialog suports the following contexts
 + `user` - the user context stores attributes against the user node in Dgraph. As such attributes stored in the user context will persist across requests. 
-+ `session` - the session context is an in-memory context valid for a single request. It is a convenient context to store application specific attributes that are only required within the space of a single requiest.
++ `session` - the session context is an in-memory context valid for a single request. It is a convenient context to store application specific attributes that are only required within the space of a single request.
 + `conversation` - the conversation context is also an in-memeory context and it stores information relevant to the conversation. Currently you can access:
     + `interpreted_intent` - a string with the id of the intent following interpretation of an incoming user utterance
     + `current_scene` - a string with the id of the current scene (i.e. the scene that has been selected following interpretation of the incoming intent)

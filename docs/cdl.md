@@ -102,7 +102,7 @@ conversation:
        ...
 ```
 
-In the scene above the user is greeting the bot with `hiHowAreYou`, and the bot replies with an `allGoodHowAreYou` intent. The user can then either provide a positive response (`notGreat`) or a negative response (`doingGreat`). Either one of those intents is a valid next intent for this conversation design. If one of those two intents comes through, and because there are no other conditions on the intent exchage the bot will reply with `fantasticHowCanIHelp`. A more nuanced conversation, of course,  would place conditions on the bot's response based on the sentiment within the user's reply.
+In the scene above the user is greeting the bot with `hiHowAreYou`, and the bot replies with an `allGoodHowAreYou` intent. The user can then either provide a positive response (`doingGreat`) or a negative response (`notGreat`). Either one of those intents is a valid next intent for this conversation design. If one of those two intents comes through, and because there are no other conditions on the intent exchage the bot will reply with `fantasticHowCanIHelp`. A more nuanced conversation, of course,  would place conditions on the bot's response based on the sentiment within the user's reply.
 
 Intent can also connect scenes by _spanning_ across scenes. moving forward the conversation. This can be achieved by the `scene` directive.
 
